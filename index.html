@@ -399,7 +399,7 @@
     </style>
 </head>
 <body>
-
+    <audio id="bg-music" src="snaptik.vn_MKmpp.mp4 2.mp3" loop></audio>
     <div id="star-bg"></div>
     <canvas id="meteor-canvas"></canvas>
 
@@ -501,7 +501,23 @@
         </div>
     </div>
 
-    <script>
+<script>
+        // --- GLOBAL BACKGROUND MUSIC ---
+        const bgMusic = document.getElementById('bg-music');
+        let musicStarted = false;
+
+        function startMusicOnce() {
+            if (musicStarted) return;
+            bgMusic.volume = 0.6;
+            bgMusic.play().catch(() => {});
+            musicStarted = true;
+            document.removeEventListener('click', startMusicOnce);
+            document.removeEventListener('touchstart', startMusicOnce);
+        }
+
+        document.addEventListener('click', startMusicOnce);
+        document.addEventListener('touchstart', startMusicOnce);
+
         // --- 1. SETUP CHUNG ---
         function createStars() {
             const bg = document.getElementById('star-bg');
@@ -881,15 +897,22 @@
 
         function initWindowStars() {
             const layer = document.getElementById('stars-layer-window');
-            // Check if already inited
-            if(layer.children.length > 0) return;
-            for(let i=0; i<30; i++) {
-                let s = document.createElement('div');
-            s.style.position = 'absolute'; s.style.background = 'white'; s.style.borderRadius = '50%';
-                s.style.width = Math.random()*2 + 'px'; s.style.height = s.style.width;
-                s.style.left = Math.random()*100+'%';
-            s.style.top = Math.random()*100+'%';
+            if (layer.children.length > 0) return;
+
+            for (let i = 0; i < 30; i++) {
+                const s = document.createElement('div');
+                const size = Math.random() * 2 + 1;
+
+                s.style.position = 'absolute';
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
+                s.style.borderRadius = '50%';
+                s.style.background = 'white';
                 s.style.opacity = Math.random();
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top = Math.random() * 100 + '%';
+                s.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite ease-in-out`;
+
                 layer.appendChild(s);
             }
         }
