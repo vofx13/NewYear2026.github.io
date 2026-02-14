@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gửi Trao Năm Mới 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         /* --- GLOBAL RESET & FONTS --- */
         :root {
@@ -14,13 +17,19 @@
             --fire-glow: rgba(255, 120, 0, 0.6);
             --paper-bg: #fdfaf1;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Lora', serif;
             background-color: var(--bg-night);
             color: #fff;
-            overflow: hidden; /* Ngăn cuộn trang chính */
+            overflow: hidden;
+            /* Ngăn cuộn trang chính */
             height: 100vh;
             width: 100vw;
             /* Chống rung khi scroll trên mobile */
@@ -30,42 +39,73 @@
         /* --- BACKGROUND SAO & SAO BĂNG --- */
         #star-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -2;
             background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
             overflow: hidden;
         }
+
         #meteor-canvas {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
             pointer-events: none;
         }
 
         .star {
             position: absolute;
-            background: white; border-radius: 50%;
+            background: white;
+            border-radius: 50%;
             animation: twinkle var(--duration) infinite ease-in-out;
             opacity: var(--opacity);
         }
-        @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
 
         /* --- LOGIC CHUYỂN TRANG --- */
         .page {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: none; flex-direction: column; 
-            justify-content: center; align-items: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             opacity: 0;
             z-index: 10;
-            padding: 20px; /* Thêm padding để nội dung không sát lề mobile */
+            padding: 20px;
+            /* Thêm padding để nội dung không sát lề mobile */
         }
-        .page.active { display: flex; opacity: 1; pointer-events: auto; }
-        
+
+        .page.active {
+            display: flex;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         .page-exit {
             animation: pageZoomOut 0.8s forwards ease-in;
             pointer-events: none;
         }
+
         .page-enter {
             display: flex;
             animation: pageZoomIn 1s forwards ease-out;
@@ -73,45 +113,78 @@
         }
 
         @keyframes pageZoomOut {
-            0% { opacity: 1; transform: scale(1); filter: blur(0); }
-            100% { opacity: 0; transform: scale(1.2); filter: blur(10px); }
+            0% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.2);
+                filter: blur(10px);
+            }
         }
+
         @keyframes pageZoomIn {
-            0% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
-            100% { opacity: 1; transform: scale(1); filter: blur(0); }
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+                filter: blur(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
 
         /* --- STYLE CHO NÚT BẤM (RESPONSIVE) --- */
         .btn-general {
             margin-top: 20px;
-            padding: 12px 30px; /* Tăng vùng bấm cho cảm ứng */
+            padding: 12px 30px;
+            /* Tăng vùng bấm cho cảm ứng */
             background: transparent;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 30px; cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            cursor: pointer;
             font-family: 'Dancing Script', cursive;
             font-size: clamp(1.2rem, 4vw, 1.5rem);
             /* Tự động chỉnh size chữ nút */
             transition: 0.3s;
-            touch-action: manipulation; /* Tối ưu cho touch */
+            touch-action: manipulation;
+            /* Tối ưu cho touch */
         }
-        .btn-general:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); box-shadow: 0 0 15px rgba(255,255,255,0.3); }
+
+        .btn-general:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
 
         /* --- PAGE 1: NHẬP TÊN --- */
         #page-1 input {
             background: transparent;
-            border: none; border-bottom: 2px solid #fff;
-            color: var(--text-gold); font-family: 'Dancing Script', cursive;
+            border: none;
+            border-bottom: 2px solid #fff;
+            color: var(--text-gold);
+            font-family: 'Dancing Script', cursive;
             font-size: clamp(1.5rem, 5vw, 2.5rem);
-            text-align: center; outline: none;
+            text-align: center;
+            outline: none;
             padding: 10px;
-            width: 100%; max-width: 300px;
+            width: 100%;
+            max-width: 300px;
         }
-        #page-1 h2 { 
+
+        #page-1 h2 {
             font-weight: normal;
-            margin-bottom: 20px; 
-            font-size: clamp(1rem, 4vw, 1.5rem); 
-            opacity: 0.8; text-align: center;
+            margin-bottom: 20px;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            opacity: 0.8;
+            text-align: center;
         }
 
         /* --- PAGE 2: THIỆP (BỨC THƯ - RESPONSIVE) --- */
@@ -125,22 +198,25 @@
             /* Giới hạn chiều rộng trên Desktop */
             /* Xử lý chiều cao trên Mobile xoay ngang */
             max-height: 85vh;
-            overflow-y: auto; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), inset 0 0 50px rgba(0,0,0,0.05);
+            overflow-y: auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 50px rgba(0, 0, 0, 0.05);
             position: relative;
             transform: rotate(-1deg);
             animation: slideIn 1.2s ease-out forwards;
         }
+
         .letter-container::before {
             content: '';
             position: absolute;
-            top: 0; right: 0;
+            top: 0;
+            right: 0;
             border-width: 0 40px 40px 0;
             border-style: solid;
             border-color: #ddd var(--bg-night) #ddd #ddd;
             display: block;
             width: 0;
         }
+
         .letter-container h1 {
             font-family: 'Dancing Script', cursive;
             font-size: clamp(1.8rem, 5vw, 2.5rem);
@@ -149,6 +225,7 @@
             border-bottom: 1px solid rgba(138, 35, 35, 0.2);
             padding-bottom: 10px;
         }
+
         .letter-content {
             font-size: clamp(1rem, 3.5vw, 1.2rem);
             line-height: 1.6;
@@ -156,248 +233,477 @@
             text-align: left;
             font-style: italic;
         }
+
         .letter-footer {
             margin-top: 20px;
             text-align: right;
             font-family: 'Dancing Script', cursive;
             font-size: clamp(1.1rem, 4vw, 1.3rem);
         }
+
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(50px) rotate(-3deg); }
-            to { opacity: 1; transform: translateY(0) rotate(-1deg); }
+            from {
+                opacity: 0;
+                transform: translateY(50px) rotate(-3deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(-1deg);
+            }
         }
 
         /* --- PAGE 3: CHOICE --- */
         .card {
             width: 90%;
             max-width: 600px;
-            padding: 30px 20px !important; /* Ghi đè inline style */
+            padding: 30px 20px !important;
+            /* Ghi đè inline style */
         }
+
         .card h1 {
             font-size: clamp(2rem, 8vw, 3rem) !important;
         }
-        .choice-btn-group { 
+
+        .choice-btn-group {
             display: flex;
-            gap: 20px; flex-wrap: wrap; justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         /* --- PAGE 3: INTERACTIVE (SCROLLABLE) --- */
         #page-3-interactive {
             display: none;
-            overflow-y: auto; /* Cho phép cuộn dọc */
+            overflow-y: auto;
+            /* Cho phép cuộn dọc */
             overflow-x: hidden;
             background-color: var(--bg-night);
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 20;
             -webkit-overflow-scrolling: touch;
             /* Mượt hơn trên iOS */
         }
+
         .interactive-container {
             max-width: 700px;
-            margin: 0 auto; 
+            margin: 0 auto;
             padding: 20px;
-            position: relative; z-index: 100; padding-bottom: 100px;
+            position: relative;
+            z-index: 100;
+            padding-bottom: 100px;
         }
+
         .interactive-section {
             min-height: 90vh;
             /* Mỗi phần chiếm gần trọn màn hình */
             display: flex;
             flex-direction: column;
-            justify-content: center; align-items: center;
-            opacity: 0; transform: translateY(20px);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
             transition: opacity 1s, transform 1s;
             padding: 20px 0;
         }
-        .interactive-section.visible { opacity: 1; transform: translateY(0); }
-        
+
+        .interactive-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .interactive-title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2rem, 6vw, 3rem); /* Responsive text */
+            font-size: clamp(2rem, 6vw, 3rem);
+            /* Responsive text */
             margin-bottom: 20px;
             color: var(--text-gold);
-            text-shadow: 0 0 10px var(--fire-glow); text-align: center;
+            text-shadow: 0 0 10px var(--fire-glow);
+            text-align: center;
         }
-        
+
         /* --- Element: Nồi Bánh Chưng --- */
-        .pot-container { 
+        .pot-container {
             position: relative;
-            width: 120px; height: 100px; 
-            background: #3e2723; border-radius: 10px 10px 40px 40px; 
+            width: 120px;
+            height: 100px;
+            background: #3e2723;
+            border-radius: 10px 10px 40px 40px;
             margin: 40px auto;
             /* Margin gọn hơn */
             box-shadow: 0 0 50px var(--fire-glow);
-            animation: flicker 3s infinite alternate; 
+            animation: flicker 3s infinite alternate;
             transform-origin: center;
         }
+
         /* Mobile Scale cho nồi */
         @media (max-width: 400px) {
-            .pot-container { transform: scale(0.8); margin: 30px auto; }
+            .pot-container {
+                transform: scale(0.8);
+                margin: 30px auto;
+            }
         }
-        
-        .pot-lid { 
+
+        .pot-lid {
             width: 130px;
-            height: 20px; background: #5d4037; 
-            position: absolute; top: -10px; left: -5px; 
-            border-radius: 5px; animation: rumble 0.5s infinite;
-        }
-        .steam { 
+            height: 20px;
+            background: #5d4037;
             position: absolute;
-            top: -20px; left: 50%; 
-            transform: translateX(-50%); 
-            color: rgba(255,255,255,0.8); 
+            top: -10px;
+            left: -5px;
+            border-radius: 5px;
+            animation: rumble 0.5s infinite;
+        }
+
+        .steam {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.8);
             font-family: 'Dancing Script', cursive;
             font-size: 1.2rem;
             white-space: nowrap;
-            animation: steamUpNatural 4s ease-out forwards; 
-            opacity: 0; pointer-events: none;
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            animation: steamUpNatural 4s ease-out forwards;
+            opacity: 0;
+            pointer-events: none;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
-        
+
         /* --- Element: Đèn Dầu --- */
-        .lamp { 
+        .lamp {
             width: 40px;
-            height: 60px; 
-            background: rgba(255, 255, 255, 0.1); 
-            border: 1px solid rgba(255,255,255,0.2); 
-            border-radius: 50% 50% 10% 10%; 
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50% 50% 10% 10%;
             position: relative;
-            margin: 20px auto; 
-            display: flex; justify-content: center; overflow: hidden;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
-        .flame { 
-            width: 14px;
-            height: 30px; 
-            background: linear-gradient(to top, orangered, orange, yellow);
-            border-radius: 50% 50% 20% 20%; 
-            position: absolute; bottom: 5px;
-            box-shadow: 0 0 15px orange; opacity: 0.8; 
-            animation: flickerSmall 0.2s infinite alternate; 
-            transform-origin: bottom center; transition: all 0.5s;
-        }
-        .flame.flare-up { animation: flameBurst 2s forwards; }
 
-        .wish-input-wrapper { position: relative; width: 90%; max-width: 400px; margin: 0 auto; height: 50px; }
-        .wish-input, textarea { 
-            width: 100%;
-            background: transparent; border: none; border-bottom: 1px solid #777; 
-            color: inherit; text-align: center; padding: 10px; 
-            font-family: 'Dancing Script', cursive; font-size: 1.5rem;
-            outline: none; display: block; 
+        .flame {
+            width: 14px;
+            height: 30px;
+            background: linear-gradient(to top, orangered, orange, yellow);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            bottom: 5px;
+            box-shadow: 0 0 15px orange;
+            opacity: 0.8;
+            animation: flickerSmall 0.2s infinite alternate;
+            transform-origin: bottom center;
+            transition: all 0.5s;
         }
-        textarea { font-family: 'Lora', serif; font-size: 1rem; width: 90%; max-width: 400px; resize: none; margin: 0 auto; display: block;}
-        
+
+        .flame.flare-up {
+            animation: flameBurst 2s forwards;
+        }
+
+        .wish-input-wrapper {
+            position: relative;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto;
+            height: 50px;
+        }
+
+        .wish-input,
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #777;
+            color: inherit;
+            text-align: center;
+            padding: 10px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            outline: none;
+            display: block;
+        }
+
+        textarea {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            width: 90%;
+            max-width: 400px;
+            resize: none;
+            margin: 0 auto;
+            display: block;
+        }
+
         .ash-text {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            font-family: 'Dancing Script', cursive; font-size: 1.5rem;
-            text-align: center; pointer-events: none; display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            text-align: center;
+            pointer-events: none;
+            display: none;
             /* Xử lý text dài trên mobile */
             white-space: nowrap;
-            overflow: hidden; text-overflow: ellipsis;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
         .turn-to-ash {
             animation: ashDissolve 3s forwards ease-in-out;
             display: block !important;
         }
 
         /* --- Element: Cửa sổ (Responsive) --- */
-        .window-frame { 
+        .window-frame {
             /* Thay đổi width/height cố định thành tương đối */
             width: 80vw;
-            max-width: 300px; 
-            height: 50vh; 
-            max-height: 400px; 
-            border: 8px solid #3e2723; 
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); 
+            max-width: 300px;
+            height: 50vh;
+            max-height: 400px;
+            border: 8px solid #3e2723;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
             position: relative;
-            overflow: hidden; border-radius: 4px;
+            overflow: hidden;
+            border-radius: 4px;
             margin: 0 auto;
         }
+
         #window-meteor-canvas {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 5;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
         }
-        
+
         /* --- Element: Lì xì --- */
-        .envelope { 
+        .envelope {
             width: 120px;
-            height: 180px; 
-            background: var(--accent-red); margin: 30px auto; 
-            position: relative; cursor: pointer; border-radius: 5px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: flex;
-            justify-content: center; align-items: center; transition: transform 0.5s; 
+            height: 180px;
+            background: var(--accent-red);
+            margin: 30px auto;
+            position: relative;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s;
         }
-        .envelope::after { content: '🧧'; font-size: 2rem; }
-        .lucky-note { 
+
+        .envelope::after {
+            content: '🧧';
+            font-size: 2rem;
+        }
+
+        .lucky-note {
             display: none;
-            background: #fff5e6; color: #8a2323; padding: 20px;
-            border-radius: 5px; width: 90%; max-width: 400px; margin: 20px auto; 
+            background: #fff5e6;
+            color: #8a2323;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+            margin: 20px auto;
             font-family: 'Dancing Script', cursive;
             font-size: 1.3rem;
-            animation: unfold 1s ease; text-align: center;
+            animation: unfold 1s ease;
+            text-align: center;
         }
 
         /* --- KEYFRAMES --- */
-        @keyframes steamUpNatural { 
-            0% { top: -20px; opacity: 0; transform: translateX(-50%) scale(0.5); } 
-            20% { opacity: 1; transform: translateX(-55%) scale(1); } 
-            50% { transform: translateX(-45%) scale(1.1); }
-            100% { top: -150px; opacity: 0; transform: translateX(-50%) scale(1.5); filter: blur(2px); } 
+        @keyframes steamUpNatural {
+            0% {
+                top: -20px;
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translateX(-55%) scale(1);
+            }
+
+            50% {
+                transform: translateX(-45%) scale(1.1);
+            }
+
+            100% {
+                top: -150px;
+                opacity: 0;
+                transform: translateX(-50%) scale(1.5);
+                filter: blur(2px);
+            }
         }
-        @keyframes flicker { 0% { opacity: 0.8; transform: scale(1); } 100% { opacity: 1; transform: scale(1.05); } }
-        @keyframes flickerSmall { 0% { opacity: 0.7; transform: scale(0.8); } 100% { opacity: 0.9; transform: scale(0.9); } }
-        @keyframes rumble { 0% { transform: rotate(0deg); } 25% { transform: rotate(1deg); } 75% { transform: rotate(-1deg); } }
-        @keyframes unfold { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-        
+
+        @keyframes flicker {
+            0% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes flickerSmall {
+            0% {
+                opacity: 0.7;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 0.9;
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes rumble {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(1deg);
+            }
+
+            75% {
+                transform: rotate(-1deg);
+            }
+        }
+
+        @keyframes unfold {
+            from {
+                transform: scaleY(0);
+            }
+
+            to {
+                transform: scaleY(1);
+            }
+        }
+
         @keyframes flameBurst {
-            0% { transform: scale(0.9); filter: brightness(1); }
-            20% { transform: scale(1.6); filter: brightness(1.5); box-shadow: 0 0 60px orangered; }
-            80% { transform: scale(1.4); filter: brightness(1.2); }
-            100% { transform: scale(0.9); filter: brightness(1); }
+            0% {
+                transform: scale(0.9);
+                filter: brightness(1);
+            }
+
+            20% {
+                transform: scale(1.6);
+                filter: brightness(1.5);
+                box-shadow: 0 0 60px orangered;
+            }
+
+            80% {
+                transform: scale(1.4);
+                filter: brightness(1.2);
+            }
+
+            100% {
+                transform: scale(0.9);
+                filter: brightness(1);
+            }
         }
 
         @keyframes ashDissolve {
-            0% { color: #fff; opacity: 1; transform: translateY(0) scale(1); }
-            30% { color: #333; text-shadow: 0 0 15px orangered; transform: translateY(-20px) scale(1.1); } 
-            60% { color: #888; text-shadow: none; filter: blur(4px); letter-spacing: 5px; opacity: 0.5; } 
-            100% { color: transparent; transform: translateY(-150px) scale(1.5); filter: blur(15px); letter-spacing: 20px; opacity: 0; } 
+            0% {
+                color: #fff;
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            30% {
+                color: #333;
+                text-shadow: 0 0 15px orangered;
+                transform: translateY(-20px) scale(1.1);
+            }
+
+            60% {
+                color: #888;
+                text-shadow: none;
+                filter: blur(4px);
+                letter-spacing: 5px;
+                opacity: 0.5;
+            }
+
+            100% {
+                color: transparent;
+                transform: translateY(-150px) scale(1.5);
+                filter: blur(15px);
+                letter-spacing: 20px;
+                opacity: 0;
+            }
         }
 
         /* --- PAGE 4: FINALE --- */
         #happy-new-year {
             position: absolute;
-            top: 40%; left: 0; width: 100%;
-            text-align: center; opacity: 0; pointer-events: none;
-            transition: opacity 3s ease; z-index: 200;
-            padding: 0 10px; /* Tránh sát lề mobile */
+            top: 40%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 3s ease;
+            z-index: 200;
+            padding: 0 10px;
+            /* Tránh sát lề mobile */
         }
+
         #happy-new-year h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(2.5rem, 8vw, 5rem); /* Tự động chỉnh size chữ */
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            /* Tự động chỉnh size chữ */
             color: #fff;
-            text-shadow: 0 0 30px rgba(255,255,255,1), 0 0 60px #ffbd69;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px #ffbd69;
             line-height: 1.2;
         }
-        #happy-new-year p { 
+
+        #happy-new-year p {
             font-size: clamp(1rem, 4vw, 1.5rem);
-            margin-top: 10px; letter-spacing: 2px; 
-            text-shadow: 0 0 10px rgba(255,255,255,0.5); 
+            margin-top: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        
-        #fireworksCanvas { display: block;
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+
+        #fireworksCanvas {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* --- MEDIA QUERIES BỔ SUNG CHO MOBILE NHỎ --- */
         @media (max-width: 600px) {
-            .letter-container { padding: 30px 20px; width: 95%; }
+            .letter-container {
+                padding: 30px 20px;
+                width: 95%;
+            }
+
             /* Đẩy nút xuống chút để không bị dính */
-            .btn-general { margin-top: 25px; } 
+            .btn-general {
+                margin-top: 25px;
+            }
         }
     </style>
 </head>
+
 <body>
     <audio id="bg-music" src="snaptik.vn_MKmpp.mp4 2.mp3" loop></audio>
     <div id="star-bg"></div>
@@ -411,23 +717,24 @@
 
     <div id="page-2" class="page">
         <div class="letter-container">
-           
             <h1>Gửi <span id="display-name">...</span>,</h1>
             <div id="typewriter-text" class="letter-content"></div>
             <div class="letter-footer" id="letter-footer" style="opacity: 0; transition: 1s;">
                 Ký tên: Tui nè (Gửi từ 2026)
             </div>
-            <p id="wait-message" style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic; font-family: 'Lora', serif;">
-    
-            Đợi 1 xíu nhé...
+            <p id="wait-message"
+                style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic; font-family: 'Lora', serif;">
+                Đợi 1 xíu nhé...
             </p>
         </div>
-        </div>
+    </div>
 
     <div id="page-3-choice" class="page">
-        <div class="card" style="text-align: center; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 15px;">
+        <div class="card"
+            style="text-align: center; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 15px;">
             <h1 style="font-family: 'Dancing Script', cursive; color: var(--text-gold);">Gửi Gắm Tương Lai</h1>
-            <p style="margin: 20px 0; font-size: clamp(1rem, 3vw, 1.2rem);">Bạn có mong ước gì gửi gắm cho chính mình trong tương lai không?</p>
+            <p style="margin: 20px 0; font-size: clamp(1rem, 3vw, 1.2rem);">Bạn có mong ước gì gửi gắm cho chính mình
+                trong tương lai không?</p>
             <div class="choice-btn-group">
                 <button class="btn-general" onclick="startInteractiveMode()">Có chứ</button>
                 <button class="btn-general" onclick="goToPage4()">Không, đến giao thừa thôi</button>
@@ -436,52 +743,54 @@
     </div>
 
     <div id="page-3-interactive">
- 
+
         <div class="interactive-container">
             <section class="interactive-section visible">
                 <h2 class="interactive-title">Bếp lửa năm mới</h2>
                 <div class="pot-container">
                     <div class="pot-lid"></div>
-                    
-                <div id="steam-container"></div>
+                    <div id="steam-container"></div>
                 </div>
-                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong cầu đang bay lên.</p>
-                <div style="text-align: center; font-size: 1.5rem; margin-top: 20px;">⬇</div>
+                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong
+                    cầu đang bay lên.</p>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Gửi Lại Năm Cũ</h2>
                 <div class="lamp">
                     <div class="flame" id="lamp-flame"></div>
-             
                 </div>
                 <div class="wish-input-wrapper">
-                    <input type="text" class="wish-input" id="wish-input-old" placeholder="Một nỗi buồn muốn buông bỏ..." autocomplete="off">
+                    <input type="text" class="wish-input" id="wish-input-old"
+                        placeholder="Một nỗi buồn muốn buông bỏ..." autocomplete="off">
                     <div id="ash-display" class="ash-text"></div>
                 </div>
-            
-                <button class="btn-general" onclick="lightLamp()" style="display: block; margin: 20px auto;">Thắp đèn & Hóa giải</button>
-                <div style="text-align: center; font-size: 1.5rem; margin-top: 20px;">⬇</div>
+
+                <button class="btn-general" onclick="lightLamp()" style="display: block; margin: 20px auto;">Thắp đèn &
+                    Hóa giải</button>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Khung Cửa Nguyện Cầu</h2>
                 <div class="window-frame" id="window-frame">
                     <div id="stars-layer-window" style="width:100%; height:100%;"></div>
-                    <canvas id="window-meteor-canvas"></canvas> 
+                    <canvas id="window-meteor-canvas"></canvas>
                 </div>
-                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..." style="margin-top:20px; color: #e6dace;"></textarea>
-                <button class="btn-general" onclick="sendWish()" style="display: block; margin: 20px auto;">Gửi niềm hy vọng</button>
-                <p id="window-feedback" style="text-align:center; font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">Vũ trụ đã lắng nghe.</p>
-                <div style="text-align: center; font-size: 1.5rem; margin-top: 20px;">⬇</div>
+                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..."
+                    style="margin-top:20px; color: #e6dace;"></textarea>
+                <button class="btn-general" onclick="sendWish()" style="display: block; margin: 20px auto;">Gửi niềm hy
+                    vọng</button>
+                <p id="window-feedback"
+                    style="text-align:center; font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">
+                    Vũ trụ đã lắng nghe.</p>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Lộc Đầu Năm</h2>
-                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn liếng tinh thần cho bạn.</p>
+                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn
+                    liếng tinh thần cho bạn.</p>
                 <div class="envelope" onclick="openEnvelope()"></div>
                 <div id="lucky-note" class="lucky-note"></div>
-                <div style="text-align: center; font-size: 1.5rem; margin-top: 20px;">⬇</div>
             </section>
 
             <section class="interactive-section">
@@ -496,12 +805,11 @@
         <canvas id="fireworksCanvas"></canvas>
         <div id="happy-new-year">
             <h1>Happy New Year 2026</h1>
-     
             <p>Rực rỡ - Bình An - Hạnh Phúc</p>
         </div>
     </div>
 
-<script>
+    <script>
         // --- GLOBAL BACKGROUND MUSIC ---
         const bgMusic = document.getElementById('bg-music');
         let musicStarted = false;
@@ -509,7 +817,7 @@
         function startMusicOnce() {
             if (musicStarted) return;
             bgMusic.volume = 0.6;
-            bgMusic.play().catch(() => {});
+            bgMusic.play().catch(() => { });
             musicStarted = true;
             document.removeEventListener('click', startMusicOnce);
             document.removeEventListener('touchstart', startMusicOnce);
@@ -521,14 +829,15 @@
         // --- 1. SETUP CHUNG ---
         function createStars() {
             const bg = document.getElementById('star-bg');
-            for(let i=0; i<100; i++) {
-                
+            for (let i = 0; i < 100; i++) {
+
                 const s = document.createElement('div');
                 s.className = 'star';
                 const size = Math.random() * 2 + 1;
-                s.style.width = size + 'px'; s.style.height = size + 'px';
+                s.style.width = size + 'px';
+                s.style.height = size + 'px';
                 s.style.left = Math.random() * 100 + '%';
-         
+
                 s.style.top = Math.random() * 100 + '%';
                 s.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
                 s.style.setProperty('--opacity', Math.random());
@@ -546,7 +855,7 @@
                 this.height = 0;
                 this.isWindow = isWindow;
                 this.resize();
-                if(!isWindow) {
+                if (!isWindow) {
                     window.addEventListener('resize', () => this.resize());
                 } else {
                     // Update: Listen to window resize for window frame too
@@ -573,7 +882,8 @@
             }
 
             shoot(forced = false) {
-                let chance = this.isWindow ? 0.01 : 0.02; 
+                let chance = this.isWindow ?
+                    0.01 : 0.02;
                 if (!forced && Math.random() > chance) return;
                 this.meteors.push(new Meteor(this.width, this.height, this.isWindow));
             }
@@ -585,7 +895,7 @@
                 for (let i = 0; i < this.meteors.length; i++) {
                     this.meteors[i].update();
                     this.meteors[i].draw(this.ctx);
-                    
+
                     if (this.meteors[i].isDead()) {
                         this.meteors.splice(i, 1);
                         i--;
@@ -598,20 +908,20 @@
         class Meteor {
             constructor(w, h, isWindow) {
                 this.isWindow = isWindow;
-                if(isWindow) {
+                if (isWindow) {
                     this.x = Math.random() * w;
-                    this.y = Math.random() * (h * 0.4); 
+                    this.y = Math.random() * (h * 0.4);
                     this.len = Math.random() * 40 + 30;
                     this.speed = Math.random() * 2 + 5;
                     this.size = Math.random() + 0.5;
                 } else {
                     this.x = Math.random() * w;
-                    this.y = Math.random() * h * 0.5; 
+                    this.y = Math.random() * h * 0.5;
                     this.len = Math.random() * 200 + 100;
                     this.speed = Math.random() * 10 + 20;
                     this.size = Math.random() * 2 + 0.5;
                 }
-                
+
                 this.angle = Math.PI / 4 + (Math.random() * 0.2 - 0.1);
                 this.vx = Math.cos(this.angle) * this.speed;
                 this.vy = Math.sin(this.angle) * this.speed;
@@ -655,57 +965,58 @@
 
         const bgMeteorEngine = new MeteorEngine('meteor-canvas');
         // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
-        
+
         const wishesList = [
-            "Năm 2026 tới rồi, mong mỗi ngày thức dậy cậu đều thấy nhiều năng lượng và niềm vui. Chúc cậu luôn đủ sức khỏe để cố gắng hết mình, đủ kiên nhẫn để vượt qua mấy kỳ thi căng thẳng, và luôn giữ tinh thần tích cực. Chúc cậu học tốt, thi tốt và đậu Nguyện vọng 1 như mong ước nha, cố lên!",
-            "Năm mới tới rồi, chúc cậu luôn vững tin vào chính mình nha, vì cậu xứng đáng với những điều tốt đẹp nhất. Mong năm 2026 sẽ là một hành trình thật rực rỡ, đặc biệt là thi thật tốt và đậu Nguyện vọng 1 như mong ước nheee. Cố gắng hết mình nhé, thành công đang đợi cậu ở phía trước đó!",
-            "Chúc bạn một năm mới bình an từ trong tâm trí đến cuộc sống bên ngoài. Mong rằng mọi lo toan của năm cũ sẽ tan biến, nhường chỗ cho những cơ hội mới, những người bạn mới và những niềm vui bất ngờ đang chờ đợi bạn ở phía trước.",
-            "Năm mới 2026, chúc bạn chân cứng đá mềm trên mọi nẻo đường. Dù cuộc sống có đôi lúc chông gai, hãy nhớ rằng sau cơn mưa trời lại sáng. Mong bạn luôn tìm thấy ánh sáng dẫn lối và gặt hái được những thành quả ngọt ngào xứng đáng với nỗ lực của mình.",
-            "Một năm mới lại đến, chúc bạn có thêm nhiều thời gian ý nghĩa bên gia đình và những người thân yêu. Tiền bạc có thể kiếm lại được, nhưng khoảnh khắc sum vầy là vô giá. Hãy trân trọng từng phút giây hạnh phúc và lấp đầy năm 2026 bằng tiếng cười.",
-            "Chúc bạn năm 2026 sự nghiệp thăng hoa, tài lộc dồi dào nhưng quan trọng nhất vẫn là sức khỏe dẻo dai. Đừng quên chăm sóc bản thân giữa guồng quay công việc, bởi vì sức khỏe chính là nền tảng vững chắc nhất để bạn chinh phục mọi đỉnh cao mơ ước.",
-            "Gửi đến bạn lời chúc năm mới tràn ngập tình yêu thương và sự ấm áp. Mong rằng năm nay bạn sẽ tìm thấy một nửa yêu thương hoặc vun đắp hạnh phúc hiện tại thêm bền chặt. Chúc trái tim bạn luôn được sưởi ấm bởi những rung động ngọt ngào nhất.",
-            "Năm mới 2026, chúc bạn luôn giữ được sự tò mò và khao khát khám phá thế giới. Hãy đi đến những vùng đất mới, học hỏi những điều mới lạ và mở rộng tầm mắt. Cuộc đời là những chuyến đi, và mong hành trình năm nay của bạn sẽ thật tuyệt vời.",
-            "Chúc bạn một năm mới tâm bất biến giữa dòng đời vạn biến. Dù thế giới bên ngoài có ồn ào đến đâu, mong bạn vẫn giữ được sự tĩnh lặng và an yên trong tâm hồn. Hãy sống chậm lại một chút để cảm nhận trọn vẹn vẻ đẹp của cuộc sống này.",
-            "Năm 2026, chúc bạn dám nghĩ dám làm, biến những ước mơ ấp ủ bấy lâu thành hiện thực. Đừng sợ thất bại, bởi mỗi vấp ngã là một bài học quý giá. Hãy mạnh mẽ bước ra khỏi vùng an toàn và tỏa sáng theo cách riêng của chính bạn nhé.",
-            "Chúc bạn năm mới tiền vào như nước, nhưng niềm vui và hạnh phúc còn nhiều hơn thế. Mong rằng mỗi ngày trôi qua đều mang đến cho bạn một lý do để mỉm cười. Hãy sống hết mình, yêu thương hết lòng và tận hưởng trọn vẹn từng khoảnh khắc của năm 2026.",
-            "Năm mới chúc bạn luôn được bao quanh bởi những người bạn chân thành và tốt bụng. Mong rằng những mối quan hệ của bạn sẽ ngày càng bền chặt và mang lại nhiều giá trị tích cực. Hãy cùng nhau chia sẻ niềm vui, nỗi buồn và cùng nhau tiến về phía trước.",
-            "Chúc bạn năm 2026 không còn muộn phiền, chỉ toàn là những điều may mắn và thuận lợi. Mọi dự định bạn đặt ra đều sẽ thành công rực rỡ. Hãy tin rằng vũ trụ luôn lắng nghe những khao khát của bạn và sẽ mang đến những điều kỳ diệu đúng lúc nhất.",
-            "Chào 2026, chúc bạn có một tâm hồn rộng mở để đón nhận mọi điều hay lẽ phải. Hãy tha thứ cho những lỗi lầm cũ, buông bỏ những gánh nặng không cần thiết và bước vào năm mới với một trái tim nhẹ nhàng, thanh thản và tràn đầy tình yêu thương.",
-            "Năm mới chúc bạn luôn xinh đẹp, rạng rỡ và tự tin vào chính mình. Vẻ đẹp thực sự toát ra từ sự tử tế và trí tuệ bên trong. Hãy cứ là chính mình, tỏa sáng theo cách độc đáo nhất và khiến thế giới này trở nên tươi đẹp hơn vì có bạn.",
-            "Chúc bạn một năm 2026 công việc thuận buồm xuôi gió, làm đâu thắng đó. Mong rằng những nỗ lực không ngừng nghỉ của bạn sẽ được đền đáp xứng đáng bằng những thành tựu vượt bậc. Hãy giữ vững ngọn lửa đam mê và tiếp tục chinh phục những đỉnh cao mới.",
-            "Năm mới đến rồi, chúc bạn có những giấc ngủ ngon, những bữa ăn ấp cúng và những ngày nghỉ thảnh thơi. Cuộc sống không chỉ là công việc, hãy dành thời gian để nuông chiều bản thân và tận hưởng những niềm vui giản dị nhưng vô cùng quý giá mỗi ngày.",
-            "Chúc bạn năm 2026 tìm thấy sự cân bằng hoàn hảo giữa công việc và cuộc sống. Đừng để áp lực cuốn bạn đi quá xa, hãy biết dừng lại đúng lúc để tái tạo năng lượng. Mong bạn luôn tìm thấy niềm vui trong từng việc mình làm và sống thật trọn vẹn.",
-            "Gửi bạn lời chúc năm mới vạn sự như ý, tỷ sự như mơ. Mong rằng thần may mắn sẽ luôn gõ cửa nhà bạn, mang đến tài lộc, sức khỏe và hạnh phúc. Hãy mở rộng vòng tay đón nhận những điều tuyệt vời mà năm 2026 đang mang đến cho bạn.",
-            "Năm mới chúc bạn luôn giữ được sự lạc quan và nụ cười trên môi. Dù cuộc đời có ném cho bạn điều gì, hãy đón nhận nó với thái độ tích cực nhất. Năng lượng vui vẻ của bạn sẽ là chìa khóa mở ra mọi cánh cửa thành công và hạnh phúc.",
-            "Chúc bạn năm 2026 học được cách yêu thương bản thân nhiều hơn. Hãy lắng nghe cơ thể, chăm sóc tâm trí và đừng bao giờ để ai làm tổn thương giá trị của bạn. Bạn là phiên bản duy nhất và tuyệt vời nhất, hãy luôn nhớ kỹ điều đó nhé.",
-            "Năm mới, chúc bạn có đủ dũng khí để từ bỏ những thói quen xấu và xây dựng những thói quen tốt. Sự thay đổi nhỏ mỗi ngày sẽ tạo nên thành công lớn trong tương lai. Hãy kiên trì và tin tưởng vào quá trình hoàn thiện bản thân của mình trong năm nay.",
-            "Chúc bạn một năm 2026 đầy ắp những trải nghiệm thú vị và những bài học sâu sắc. Mong rằng mỗi khó khăn đi qua sẽ để lại cho bạn sự trưởng thành và bản lĩnh. Hãy sống như một đóa hoa, vươn mình đón nắng và tỏa ngát hương thơm cho đời.",
-            "Năm mới chúc bạn gia đình hòa thuận, anh em sum vầy, cha mẹ sống lâu trăm tuổi. Gia đình là điểm tựa vững chắc nhất, hãy dành nhiều thời gian hơn để quan tâm và chăm sóc những người thân yêu. Chúc tổ ấm của bạn luôn tràn ngập tiếng cười và hạnh phúc.",
-            "Chúc bạn năm 2026 tài chính vững vàng, đầu tư đâu thắng đó. Mong rằng túi tiền của bạn lúc nào cũng rủng rỉnh để bạn có thể thực hiện mọi dự định và chăm lo tốt cho cuộc sống. Nhưng đừng quên, tiền bạc là phương tiện, hạnh phúc mới là đích đến.",
-            "Năm mới chúc bạn tìm thấy niềm đam mê đích thực của cuộc đời mình nếu bạn chưa tìm thấy. Và nếu đã tìm thấy, chúc bạn cháy hết mình với nó. Sống với đam mê là cách tuyệt vời nhất để mỗi ngày trôi qua đều trở nên ý nghĩa và đáng nhớ.",
-            "Chúc bạn một năm 2026 thật nhiều sức khỏe để đi đến những nơi mình muốn, ăn những món mình thích và làm những điều mình yêu. Sức khỏe là vàng, hãy trân trọng và bảo vệ nó mỗi ngày. Mong bạn luôn dẻo dai và tràn đầy sức sống thanh xuân.",
-            "Chào năm mới, chúc bạn có một tâm trí minh mẫn và sáng suốt để đưa ra những quyết định đúng đắn. Mong rằng mọi lựa chọn của bạn trong năm 2026 đều dẫn đến những kết quả tốt đẹp. Hãy tin vào trực giác và trí tuệ của bản thân mình nhé.",
-            "Năm mới chúc bạn luôn được vây quanh bởi những nguồn năng lượng tích cực. Hãy tránh xa những thị phi, những điều tiêu cực làm ảnh hưởng đến tâm trạng của bạn. Chúc cuộc sống của bạn trong năm 2026 sẽ trong trẻo, nhẹ nhàng và bình yên như một dòng sông êm đềm.",
-            "Chúc bạn năm 2026 gặt hái được nhiều thành công không chỉ trong sự nghiệp mà còn trong việc phát triển bản thân. Mong bạn ngày càng hoàn thiện, trở thành phiên bản tốt hơn của chính mình ngày hôm qua. Sự tiến bộ của bạn là điều đáng tự hào nhất.",
-            "Năm mới chúc bạn có những người thầy giỏi dẫn dắt, những người bạn hiền đồng hành và những cộng sự đắc lực hỗ trợ. Thành công không bao giờ đến từ sự đơn độc, mong bạn luôn có những người tuyệt vời bên cạnh để cùng nhau chia sẻ và vươn tới vinh quang.",
-            "Chúc bạn một năm 2026 tràn đầy cảm hứng sáng tạo. Mong rằng những ý tưởng mới mẻ sẽ liên tục nảy sinh trong tâm trí bạn, giúp bạn giải quyết mọi vấn đề một cách độc đáo và hiệu quả. Hãy để trí tưởng tượng của bạn bay cao và bay xa hơn nữa.",
-            "Năm mới chúc bạn biết cách buông bỏ những gì không còn thuộc về mình để đôi tay thảnh thơi đón nhận những điều mới mẻ. Đôi khi, hạnh phúc không phải là nắm giữ mà là biết buông tay đúng lúc. Chúc bạn có một năm 2026 nhẹ nhõm và tự do tự tại.",
-            "Chúc bạn năm 2026 luôn giữ được sự tử tế và lòng trắc ẩn. Trong một thế giới đầy biến động, lòng tốt của bạn chính là ngọn hải đăng soi sáng cho nhiều người. Hãy cứ cho đi yêu thương, và cuộc đời sẽ trả lại cho bạn muôn vàn phước lành.",
-            "Năm mới chúc bạn có đủ bản lĩnh để nói 'không' với những điều không phù hợp và nói 'có' với những cơ hội tuyệt vời. Mong bạn luôn sống thật với cảm xúc của mình, không phải gượng ép hay làm hài lòng người khác. Hãy sống cuộc đời của chính bạn.",
-            "Chúc bạn một năm 2026 rực rỡ sắc màu, mỗi ngày là một bức tranh tuyệt đẹp do chính tay bạn vẽ nên. Hãy tô điểm cuộc sống bằng những niềm vui, những sở thích cá nhân và những khoảnh khắc ngẫu hứng. Đừng để cuộc sống của bạn trôi qua một cách tẻ nhạt.",
-            "Năm mới chúc bạn luôn tìm thấy ánh sáng ngay cả trong những ngày u tối nhất. Hy vọng là thứ không bao giờ được phép tắt. Mong bạn luôn giữ vững niềm tin rằng ngày mai trời lại sáng và mọi chuyện rồi sẽ ổn thôi. Chúc bạn một năm kiên cường.",
-            "Chúc bạn năm 2026 kết nối được với nhiều tâm hồn đồng điệu. Mong bạn sẽ không bao giờ cảm thấy cô đơn trên hành trình của mình. Những cuộc gặp gỡ định mệnh sẽ mang đến cho bạn những bài học quý giá và những tình bạn đẹp đẽ theo bạn suốt đời.",
-            "Năm mới chúc bạn có những giấc mơ thật đẹp và biến chúng thành hiện thực ngay khi thức giấc. Đừng để ước mơ chỉ mãi là mơ ước, hãy bắt tay vào hành động ngay hôm nay. Năm 2026 sẽ là năm của hành động và kết quả, chúc bạn thành công mỹ mãn.",
-            "Chúc bạn một năm 2026 ngập tràn lòng biết ơn. Biết ơn những gì mình đang có là cách nhanh nhất để cảm thấy hạnh phúc. Mong bạn luôn trân trọng từng bữa ăn, từng giấc ngủ và từng người thương yêu đang hiện diện trong cuộc sống của bạn mỗi ngày.",
-            "Năm mới chúc bạn có khả năng chữa lành những vết thương lòng trong quá khứ. Hãy để thời gian và tình yêu thương xoa dịu mọi nỗi đau. Chúc trái tim bạn năm 2026 sẽ lành lặn, mạnh mẽ và sẵn sàng rung động trước những điều tốt đẹp một lần nữa.",
-            "Chúc bạn năm 2026 luôn giữ được 'cái đầu lạnh và trái tim nóng'. Bình tĩnh trước mọi sóng gió và nhiệt huyết với mọi mục tiêu. Sự cân bằng này sẽ giúp bạn đi xa hơn và vững vàng hơn trên mọi hành trình mà bạn lựa chọn trong năm mới này.",
-            "Năm mới chúc bạn có những khoảnh khắc tĩnh lặng để lắng nghe tiếng nói bên trong mình. Đừng để sự ồn ào của thế giới lấn át đi trực giác của bạn. Chúc bạn tìm thấy sự bình an nội tại và luôn biết rõ con đường mình cần phải đi trong năm 2026.",
-            "Chúc bạn một năm 2026 thật phong cách và chất lừ. Hãy tự tin thể hiện cá tính, gu thẩm mỹ và phong cách sống riêng biệt của bạn. Thế giới này cần sự đa dạng, và bạn chính là một mảnh ghép độc đáo không thể thay thế. Hãy tỏa sáng nhé!",
-            "Năm mới chúc bạn luôn bao dung và vị tha. Tha thứ cho người khác cũng là cách tự giải thoát cho chính mình. Mong tâm hồn bạn năm 2026 sẽ rộng mở như biển khơi, không chấp nhặt những điều nhỏ nhen và luôn hướng tới những giá trị cao đẹp, nhân văn.",
-            "Chúc bạn năm 2026 khám phá ra những tài năng tiềm ẩn của bản thân mà bấy lâu nay bạn chưa biết. Con người bạn là một kho báu vô tận, hãy khai phá và mài giũa nó. Mong bạn sẽ ngạc nhiên và tự hào về những gì mình có thể làm được.",
-            "Năm mới chúc bạn có một sức khỏe tinh thần thật vững chãi. Hãy biết cách giải tỏa căng thẳng, tìm kiếm niềm vui và giữ cho tâm trí luôn trong trạng thái tích cực. Sức khỏe tinh thần tốt sẽ là nền tảng để bạn tận hưởng cuộc sống một cách trọn vẹn nhất.",
-            "Chúc bạn một năm 2026 'thuận thiên thời, lợi địa lợi, đạt nhân hòa'. Mọi yếu tố thiên thời địa lợi nhân hòa đều hội tụ để giúp bạn thành công. Chỉ cần bạn nỗ lực hết mình, cả vũ trụ sẽ chung tay giúp đỡ bạn đạt được mọi mong ước trong năm nay.",
-            "Cuối cùng, chúc bạn một năm 2026 hạnh phúc trọn vẹn từng giây từng phút. Không cần quá giàu sang hay quyền lực, chỉ cần mỗi ngày trôi qua bạn đều thấy lòng mình bình yên và vui vẻ. Đó mới chính là thành công lớn nhất của đời người. Chúc mừng năm mới!"
+            "Năm 2026 đã gõ cửa, chúc cậu luôn giữ vững phong độ học tập đỉnh cao, học đến đâu nhớ sâu đến đó và ôn tập đúng trọng tâm đề thi. Mục tiêu Nguyện vọng 1 đang ở rất gần, hãy nỗ lực hết mình trong giai đoạn nước rút này để hiện thực hóa ước mơ trở thành tân sinh viên nhé, cố lên!",
+            "Chúc sĩ tử năm 2026 có một tinh thần thép và ý chí kiên cường để đánh bại mọi áp lực thi cử bủa vây. Mong rằng cậu sẽ vượt vũ môn hóa rồng thành công, làm bài tự tin và cầm chắc tấm giấy báo trúng tuyển vào đúng ngôi trường Nguyện vọng 1 mà cậu hằng mong ước bấy lâu nay.",
+            "Năm mới chúc cậu chân cứng đá mềm, bút sắc tâm an trước mọi thử thách của kỳ thi sắp tới. Mong rằng mọi đêm thức khuya đèn sách và những nỗ lực không ngừng nghỉ của cậu sẽ được đền đáp xứng đáng bằng một bảng điểm rực rỡ, đủ sức để bước thẳng vào cánh cổng đại học Nguyện vọng 1.",
+            "Chúc bạn năm mới 2026 'cá chép hóa rồng', bình tĩnh chinh phục kỳ thi tốt nghiệp THPT Quốc gia với kết quả xuất sắc nhất. Hãy tin rằng Nguyện vọng 1 không còn là một giấc mơ xa vời, mà chính là đích đến thực tế mà bạn chắc chắn sẽ chạm tay vào bằng chính tài năng và sự cố gắng của mình.",
+            "Chúc cậu năm nay có một sức khỏe dẻo dai và trí tuệ minh mẫn để chiến đấu với những tập đề cương dày cộm. Mong rằng khi bước vào phòng thi, cậu sẽ khoanh đâu đúng đó, làm bài trôi chảy và đạt số điểm tuyệt đối để hiên ngang bước vào ngôi trường Nguyện vọng 1 mà mình đã lựa chọn.",
+            "Gửi đến cậu nguồn năng lượng đỗ đạt tích cực nhất cho năm 2026 rực rỡ! Chúc cậu ôn tập hiệu quả, vượt qua mọi kỳ thi khảo sát với điểm số dẫn đầu và cuối cùng là tỏa sáng rực rỡ trên bảng vàng danh dự, chính thức trở thành tân sinh viên ưu tú của ngôi trường đại học Nguyện vọng 1.",
+            "Năm mới chúc cậu: Văn chương lai láng, Toán tính siêu nhanh, Anh ngữ thông thạo và các môn tổ hợp đều đạt điểm cao chót vót. Với nền tảng kiến thức vững chắc và một chút may mắn song hành, tin rằng không gì có thể ngăn cản bước chân cậu tiến thẳng vào giảng đường Nguyện vọng 1 yêu thích.",
+            "Chúc cậu có một mùa thi 2026 đại thắng với đề thi vừa sức, giám thị dễ tính và tâm lý làm bài cực kỳ ổn định. Cổng trường đại học Nguyện vọng 1 đang mở rộng cánh cửa chờ đón một người xứng đáng như cậu, hãy cứ tự tin vững bước vì thành công chắc chắn đang đợi cậu ở phía trước.",
+            "Năm 2026 này, chúc bạn biến những lo âu thành động lực mạnh mẽ để bứt phá trong học tập. Chúc bạn thi đâu đậu đó, đạt kết quả cao ngoài mong đợi ở tất cả các môn thi và quan trọng nhất là trúng tuyển vào đúng ngành học, đúng ngôi trường đại học mà bạn đã đặt làm Nguyện vọng 1.",
+            "Tương lai tươi sáng đang nằm ngay trong tầm tay của bạn nếu bạn không ngừng nỗ lực ngay từ hôm nay. Chúc bạn ôn thi thật hiệu quả, giữ vững niềm tin vào bản thân và bứt phá ngoạn mục trong kỳ thi tới để ghi tên mình vào danh sách trúng tuyển chính thức của trường đại học Nguyện vọng 1.",
+            "Chúc bạn có một trí nhớ siêu phàm để thâu tóm mọi kiến thức quan trọng và một tâm thế bình tĩnh để xử lý mọi dạng bài tập khó. Kỳ thi năm 2026 sẽ là nơi bạn chứng minh bản lĩnh của mình, hãy nỗ lực hết sức để nhận về tấm vé vào thẳng trường đại học Nguyện vọng 1 nhe!",
+            "Năm mới, chúc mọi giọt mồ hôi và công sức bạn đổ xuống trang vở đều được vũ trụ hồi đáp bằng những điểm 9, điểm 10 chói lọi. Chúc bạn đạt được số điểm dư dả để không chỉ đỗ mà còn đỗ với thứ hạng cao vào ngôi trường Nguyện vọng 1 mà bạn luôn khao khát theo đuổi.",
+            "Chúc bạn vững tay bút và sáng tâm trí trong suốt mùa thi 2026. Dù đề thi có biến hóa hay lắt léo đến đâu, mong bạn vẫn giữ được sự tỉnh táo để xử lý gọn gàng, mang về kết quả trúng tuyển Nguyện vọng 1 như một món quà tuyệt vời nhất dành tặng cho bản thân và gia đình.",
+            "Gửi tới cậu ngàn lời chúc may mắn và niềm tin chiến thắng. Mong rằng ngày công bố điểm thi sẽ là khoảnh khắc hạnh phúc nhất trong năm, khi cậu có thể tự hào khoe với tất cả mọi người rằng mình đã chính thức đỗ vào Nguyện vọng 1 với một số điểm cực kỳ ấn tượng và thuyết phục.",
+            "Chúc bạn năm 2026 chinh phục thành công bước ngoặt lớn nhất của tuổi học trò. Hãy giữ vững ngọn lửa đam mê, tập trung cao độ cho mục tiêu phía trước và biến tấm giấy báo nhập học trường đại học Nguyện vọng 1 thành hiện thực để bắt đầu một hành trình sinh viên đầy rực rỡ và thú vị.",
+            "Chúc bạn năm nay có chiến thuật ôn thi thông minh, 'học ít hiểu nhiều' và gặp đúng những dạng bài đã chuẩn bị kỹ. Mong thần may mắn sẽ luôn mỉm cười với bạn trong phòng thi, giúp bạn đạt được tổng điểm xét tuyển cao ngất ngưởng để cầm chắc tấm vé trúng tuyển Nguyện vọng 1 trong tay.",
+            "Mùa thi 2026 này, chúc bạn có một tâm lý vững vàng như bàn thạch, không bị xao động bởi áp lực xung quanh. Hãy chiến đấu hết mình như một chiến binh thực thụ trên tờ giấy thi để sau này không phải hối tiếc, và phần thưởng xứng đáng nhất chính là cái gật đầu từ trường Nguyện vọng 1.",
+            "Chúc bạn không chỉ đơn thuần là đỗ đại học, mà còn phải đỗ vào ngôi trường danh giá nhất trong danh sách Nguyện vọng 1 của mình. Hãy biến năm 2026 thành một cột mốc lịch sử rực rỡ nhất của tuổi thanh xuân bằng việc ghi danh vào ngành học mà bạn hằng mơ ước bấy lâu nay.",
+            "Mọi sự cố gắng bền bỉ của bạn chắc chắn sẽ tạo nên một kết quả phi thường trong kỳ thi sắp tới. Chúc bạn kiên cường vượt qua những ngày ôn tập vất vả để gặt hái quả ngọt là thông báo trúng tuyển Nguyện vọng 1, mở ra một trang mới đầy hứa hẹn cho tương lai phía trước của mình.",
+            "Chúc bạn năm 2026: Sáng suốt khi lựa chọn khối thi, bình tĩnh khi đối mặt với đề thi và vỡ òa trong hạnh phúc khi nhận được kết quả trúng tuyển. Con đường dẫn đến cổng trường đại học Nguyện vọng 1 đang rất gần rồi, hãy tập trung tối đa năng lượng để về đích thật xuất sắc!",
+            "Đừng quá lo lắng vì vũ trụ luôn thấu hiểu và ủng hộ những tâm hồn chăm chỉ như bạn. Chúc bạn có một hành trình ôn luyện suôn sẻ, thi cử thuận lợi 'buồm xuôi gió' và chắc chắn đạt được kết quả đỗ Nguyện vọng 1 để bù đắp cho tất cả những ngày tháng miệt mài bên trang sách.",
+            "Chúc bạn có đủ bản lĩnh và sự tự tin để vượt qua mọi thử thách, cạm bẫy trong đề thi chính thức. Cánh cửa trường đại học Nguyện vọng 1 không hề xa xôi, nó chỉ cách bạn một chút nỗ lực và sự cẩn thận nữa thôi, hãy quyết tâm chiến thắng để mang vinh quang về cho chính mình!",
+            "Năm 2026 tới, chúc bạn có những trải nghiệm học tập thú vị và đạt được bứt phá trong tư duy. Chúc bạn đi thi gặp đúng 'tủ', làm bài nhanh gọn và chính xác để kết quả cuối cùng là một tấm giấy báo nhập học Nguyện vọng 1 đỏ chót, minh chứng cho tài năng của bạn.",
+            "Chúc bạn một năm mới tập trung cao độ, biết cách gạt bỏ những cám dỗ nhất thời để dồn toàn lực cho mục tiêu thi cử quan trọng nhất. Sự kiên trì của bạn ngày hôm nay chính là chiếc chìa khóa vàng mở ra cánh cửa trường đại học Nguyện vọng 1 mà bạn đang khát khao chinh phục.",
+            "Mong rằng năm nay bạn sẽ trở thành niềm tự hào lớn lao của gia đình và thầy cô. Chúc bạn vượt vũ môn thành công với số điểm cao ngoài mong đợi, hiên ngang bước vào cổng trường đại học Nguyện vọng 1 và bắt đầu những năm tháng sinh viên đầy năng động, sáng tạo và thành công rực rỡ.",
+            "Chúc bạn luôn giữ vững phong độ ổn định, không chủ quan khi gặp bài dễ và không nản chí trước bài khó. Hãy thể hiện tất cả những gì tốt nhất của mình trên mặt giấy thi để ngày nhận kết quả trúng tuyển Nguyện vọng 1 sẽ là ngày bạn cảm thấy tự hào về bản thân nhất.",
+            "Năm 2026, chúc bạn may mắn như rồng gặp mây, làm bài thi môn nào cũng đạt điểm xuất sắc môn đó. Chúc bạn xét tuyển đợt 1 là trúng tuyển ngay vào Nguyện vọng 1, không cần phải lo lắng hay chờ đợi thêm bất cứ đợt bổ sung nào, cứ thế mà thẳng tiến vào đại học!",
+            "Chúc bạn có một mùa thi rực rỡ sắc màu thành công và tràn đầy niềm vui chiến thắng. Hãy viết tiếp câu chuyện ước mơ của mình trên một nền tảng vững chắc hơn tại giảng đường đại học Nguyện vọng 1, nơi sẽ giúp bạn bay cao và bay xa hơn nữa trên con đường sự nghiệp sau này.",
+            "Gửi tới bạn ngàn ngôi sao may mắn từ vũ trụ để soi sáng con đường ôn thi của bạn. Chúc bạn làm bài thi thật tỉnh táo, không mắc bất kỳ sai sót đáng tiếc nào và đạt được tổng điểm dư sức để lọt vào danh sách trúng tuyển của ngôi trường đại học Nguyện vọng 1 nhé!",
+            "Chúc bạn năm nay 'cày' đến đâu trúng đến đó, kiến thức nạp vào đầu luôn được sắp xếp khoa học và dễ dàng tái hiện khi đi thi. Mục tiêu Nguyện vọng 1 chắc chắn sẽ gọi tên bạn nếu bạn tiếp tục giữ vững tinh thần học tập hăng say và quyết liệt như hiện tại.",
+            "Năm mới, chúc bạn có đủ sức khỏe dẻo dai và trí tuệ tinh anh để chinh phục mọi đỉnh cao tri thức trong chương trình học. Chúc bạn đỗ đạt vinh quang, nhận được sự ngưỡng mộ từ bạn bè khi chính thức trở thành tân sinh viên của trường đại học Nguyện vọng 1 đầy danh giá.",
+            "Chúc bạn luôn giữ được ngọn lửa đam mê và sự tò mò trong học tập vì đó chính là chìa khóa của thành công. Kỳ thi 2026 sẽ là bệ phóng hoàn hảo đưa bạn bay thẳng vào ngôi trường Nguyện vọng 1, nơi bạn có thể thỏa sức phát triển bản thân và tài năng.",
+            "Mục tiêu lớn nhất của năm nay chỉ gói gọn trong ba chữ: Đỗ Nguyện vọng 1. Chúc bạn học tập chăm chỉ có kế hoạch, thi cử suôn sẻ với tâm lý thoải mái và cuối cùng đạt được số điểm lý tưởng để đường hoàng bước vào cánh cổng trường đại học mà bạn yêu thích.",
+            "Chúc bạn năm 2026: Mỗi lần đặt bút là một lần ghi điểm, mỗi trang vở ôn tập là một bước tiến gần hơn đến thành công. Giấy báo trúng tuyển Nguyện vọng 1 chắc chắn sẽ sớm nằm gọn trong tay bạn như một phần thưởng xứng đáng cho những nỗ lực phi thường vừa qua.",
+            "Năm mới, chúc bạn có thần may mắn luôn cận kề hỗ trợ trong suốt quá trình làm bài thi. Những câu hỏi khó sẽ trở nên dễ dàng, những lựa chọn trắc nghiệm đều đi đến đáp án chính xác nhất, giúp bạn sở hữu số điểm vàng để bước chân vào Nguyện vọng 1.",
+            "Chúc bạn biết cách biến những áp lực thi cử thành động lực mạnh mẽ để bứt phá giới hạn của bản thân. Hãy chứng minh cho mọi người thấy năng lực thực sự của bạn bằng một bảng điểm chói lọi và tấm vé trúng tuyển vào đúng ngôi trường Nguyện vọng 1 nhé!",
+            "Chúc bạn một năm 2026 không còn lo âu về những con số hay điểm thi thấp. Mọi bài kiểm tra và môn thi chính thức đều đạt điểm giỏi trở lên, giúp bạn có một hồ sơ xét tuyển đẹp như mơ và dễ dàng trúng tuyển vào Nguyện vọng 1 ngay từ đợt đầu tiên.",
+            "Tương lai tươi sáng với những trải nghiệm sinh viên đầy màu sắc đang chờ đón bạn tại trường đại học Nguyện vọng 1. Chúc bạn ôn thi thật tốt, giữ gìn sức khỏe và luôn tràn đầy năng lượng tích cực để nắm bắt lấy cơ hội tuyệt vời này và tỏa sáng theo cách riêng.",
+            "Chúc bạn năm nay 'bách chiến bách thắng' trên mọi mặt trận học tập và thi cử. Đề thi THPT Quốc gia dù có khó nhằn đến đâu cũng sẽ bị bạn chinh phục một cách thuyết phục nhất. Hãy chuẩn bị tinh thần để trở thành tân sinh viên của Nguyện vọng 1 đi thôi!",
+            "Năm 2026, chúc bạn có một trí tuệ sắc sảo và một cơ thể tràn đầy năng lượng để 'cân' hết mọi kỳ thi quan trọng. Chúc mừng bạn trước vì tin rằng với sự chuẩn bị kỹ lưỡng, bạn chắc chắn sẽ tên mình trong danh sách trúng tuyển Nguyện vọng 1 đầy tự hào!",
+            "Chúc bạn luôn tin tưởng tuyệt đối vào khả năng của chính mình vì bạn giỏi hơn những gì bạn nghĩ rất nhiều. Kỳ thi này chỉ là một thử thách nhỏ để bạn khẳng định giá trị bản thân và bước tiếp vào môi trường đại học Nguyện vọng 1 đầy hứa hẹn phía trước.",
+            "Năm mới chúc bạn học đâu hiểu đó, làm bài thi mượt mà và trôi chảy như ý muốn. Khi tra cứu kết quả thi, mong rằng dòng chữ 'Trúng tuyển Nguyện vọng 1' sẽ hiện lên đầu tiên, mang lại niềm vui sướng vỡ òa cho bạn và tất cả những người thân yêu.",
+            "Chúc bạn có những người bạn đồng hành tuyệt vời trong mùa thi này, để cùng nhau chia sẻ kiến thức và cổ vũ tinh thần cho nhau. Mong rằng tất cả các bạn đều sẽ đỗ đạt cao và cùng nhau tụ họp tại giảng đường đại học Nguyện vọng 1 vào kỳ nhập học tới.",
+            "Năm 2026, chúc bạn gặt hái được những quả ngọt chín mọng sau suốt 12 năm miệt mài đèn sách vất vả. Cánh cổng trường đại học Nguyện vọng 1 đang mở toang để chào đón một tân sinh viên đầy tài năng và nhiệt huyết như bạn, hãy sẵn sàng để bắt đầu hành trình mới!",
+            "Chúc bạn: Sáng suốt trong từng câu hỏi trắc nghiệm khách quan, sắc sảo và đầy tính thuyết phục trong từng bài tự luận. Với phong độ đỉnh cao này, việc đạt điểm số dẫn đầu và trúng tuyển vào Nguyện vọng 1 chắc chắn chỉ là vấn đề thời gian mà thôi, cố lên!",
+            "Gửi tới cậu tất cả những năng lượng tích cực và sự may mắn nhất của vũ trụ để cậu vượt qua mùa thi một cách nhẹ nhàng. Chúc cậu luôn bình tĩnh, tự tin xử lý mọi tình huống và giành chiến thắng vang dội với kết quả đỗ vào đúng ngôi trường Nguyện vọng 1.",
+            "Năm mới chúc cậu thực hiện được một cú 'lội ngược dòng' ngoạn mục nếu còn đang lo lắng, hoặc tiếp tục giữ vững phong độ thủ khoa của mình. Đích đến cuối cùng là tấm vé vào đại học Nguyện vọng 1 sẽ sớm nằm trong tay cậu như một lẽ tất yếu của sự nỗ lực!",
+            "Chúc bạn thi xong là biết mình đỗ, xét tuyển là trúng ngay lập tức. Năm 2026 sẽ là cột mốc đáng nhớ nhất trong cuộc đời khi bạn chính thức trở thành tân sinh viên của trường đại học Nguyện vọng 1, bắt đầu hành trình chinh phục những đỉnh cao mới của tri thức.",
+            "Hãy để năm 2026 này trở thành năm rực rỡ nhất trong quãng đời học sinh của bạn với những kỷ niệm đẹp và thành tích học tập đáng nể. Chúc bạn nỗ lực hết mình và nhận lại được kết quả ngọt ngào nhất: Giấy thông báo trúng tuyển chính thức vào ngôi trường Nguyện vọng 1!",
+            "Cuối cùng, chúc bạn một năm mới vạn sự như ý, tỷ sự như mơ, học hành tấn tới và thi cử đỗ đạt vinh quang. Quan trọng nhất là chúc bạn sớm nhận được tin vui trúng tuyển vào Nguyện vọng 1 để có một mùa hè thật thoải mái và ý nghĩa trước khi vào đại học!"
         ];
 
         let userName = "";
@@ -713,33 +1024,32 @@
             let i = 0;
             const element = document.getElementById(elementId);
             element.innerHTML = "";
-            
-        
+
+
             function type() {
                 if (i < text.length) {
                     let char = text.charAt(i);
                     if (char === '\n') {
                         element.innerHTML += '<br>';
- 
+
                     } else {
                         element.innerHTML += char;
                     }
                     i++;
-             
+
                     setTimeout(type, speed);
                 } else {
                     document.getElementById('letter-footer').style.opacity = 1;
                     const waitMsg = document.getElementById('wait-message');
                     waitMsg.style.display = 'block';
-       
-                    waitMsg.style.animation = 'twinkle 1s infinite alternate'; 
-                    
+
+                    waitMsg.style.animation = 'twinkle 1s infinite alternate';
                     // --- UPDATE: Tự động chuyển trang sau 5 giây ---
                     setTimeout(() => {
-         
-                goToPage3(); 
+
+                        goToPage3();
                     }, 5000);
-            }
+                }
             }
             type();
         }
@@ -748,38 +1058,37 @@
         function switchPage(hideId, showId) {
             const h = document.getElementById(hideId);
             const s = document.getElementById(showId);
-            
+
             h.classList.add('page-exit');
-            h.classList.remove('active'); 
-            
+            h.classList.remove('active');
+
             setTimeout(() => {
                 h.classList.remove('page-exit');
-                h.style.display = 'none'; 
-                
+                h.style.display = 'none';
+
                 if (showId === 'page-3-interactive') {
-                    s.style.display 
-            = 'block';
-                    s.classList.add('page-enter'); 
-                    setTimeout(() => s.classList.remove('page-enter'), 1000); 
+                    s.style.display = 'block';
+                    s.classList.add('page-enter');
+                    setTimeout(() => s.classList.remove('page-enter'), 1000);
 
                     // Fix: Reset scroll on entry
                     s.scrollTop = 0;
 
-       
+
                     setTimeout(() => {
                         const sections = document.querySelectorAll('.interactive-section');
                         const observer = new IntersectionObserver((entries) => {
-                            
-            entries.forEach(entry => {
+
+                            entries.forEach(entry => {
                                 if (entry.isIntersecting) entry.target.classList.add('visible');
                             });
                         }, { threshold: 0.1 }); // Giảm threshold cho mobile dễ trigger
- 
+
                         sections.forEach(sec => observer.observe(sec));
-            }, 100);
+                    }, 100);
                 } else {
                     s.classList.add('active');
-            s.classList.add('page-enter');
+                    s.classList.add('page-enter');
                     setTimeout(() => s.classList.remove('page-enter'), 1000);
                 }
             }, 800);
@@ -787,20 +1096,21 @@
 
         function goToPage2() {
             const input = document.getElementById('name-input');
-            if (input.value.trim() === "") { alert("Hãy nhập tên để chúng mình xưng hô nhé!"); return;
+            if (input.value.trim() === "") {
+                alert("Hãy nhập tên để chúng mình xưng hô nhé!");
+                return;
             }
             userName = input.value;
             document.getElementById('display-name').innerText = userName;
-            
             switchPage('page-1', 'page-2');
             const randomWish = wishesList[Math.floor(Math.random() * wishesList.length)];
             const content = `Chào ${userName}, là tui đây.\n\n${randomWish}\n\nBạn của tui,`;
             setTimeout(() => {
-                typeWriter(content, "typewriter-text", 30); 
+                typeWriter(content, "typewriter-text", 30);
             }, 1200);
         }
 
-        function goToPage3() { 
+        function goToPage3() {
             switchPage('page-2', 'page-3-choice');
         }
 
@@ -808,28 +1118,29 @@
         function startInteractiveMode() {
             const choice = document.getElementById('page-3-choice');
             const interactive = document.getElementById('page-3-interactive');
-            
+
             choice.classList.add('page-exit');
             setTimeout(() => {
-                choice.classList.remove('active', 'page-exit'); 
+                choice.classList.remove('active', 'page-exit');
                 choice.style.display = 'none';
-                
+
                 interactive.style.display = 'block';
                 interactive.scrollTop = 0; // Đảm bảo cuộn về đầu
+                
                 interactive.classList.add('page-enter');
                 setTimeout(() => interactive.classList.remove('page-enter'), 1000);
 
                 initSteam(); initWindowStars();
-                
+
                 windowMeteorEngine = new MeteorEngine('window-meteor-canvas', true);
 
-           
+
                 const sections = document.querySelectorAll('.interactive-section');
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) entry.target.classList.add('visible');
                     });
-  
+
                 }, { threshold: 0.1 });
                 sections.forEach(sec => observer.observe(sec));
             }, 800);
@@ -838,17 +1149,17 @@
         function goToPage4() {
             const p3Choice = document.getElementById('page-3-choice');
             const p3Inter = document.getElementById('page-3-interactive');
-            
-            if(p3Choice.classList.contains('active')) {
+
+            if (p3Choice.classList.contains('active')) {
                 switchPage('page-3-choice', 'page-4');
             } else {
                 p3Inter.classList.add('page-exit');
-            setTimeout(() => {
+                setTimeout(() => {
                     p3Inter.style.display = 'none';
                     p3Inter.classList.remove('page-exit');
-                    
+
                     const p4 = document.getElementById('page-4');
-             
+
                     p4.classList.add('active', 'page-enter');
                     setTimeout(() => p4.classList.remove('page-enter'), 1000);
                 }, 800);
@@ -861,12 +1172,12 @@
             const wishes = ["Bình an", "Sức khỏe", "May mắn", "Hạnh phúc", "Thành công", "Tiền tài", "Vui vẻ"];
             const steamCont = document.getElementById('steam-container');
             setInterval(() => {
-                if(document.hidden || steamCont.offsetParent === null) return;
+                if (document.hidden || steamCont.offsetParent === null) return;
                 const el = document.createElement('div');
                 el.className = 'steam';
                 el.innerText = wishes[Math.floor(Math.random() * wishes.length)];
-                
-            
+
+
                 el.style.left = (50 + (Math.random() * 20 - 10)) + '%';
                 steamCont.appendChild(el);
                 setTimeout(() => el.remove(), 4000);
@@ -877,17 +1188,17 @@
             const inp = document.getElementById('wish-input-old');
             const ashDisplay = document.getElementById('ash-display');
             const flm = document.getElementById('lamp-flame');
-            
-            if(inp && inp.value.trim()) {
+
+            if (inp && inp.value.trim()) {
                 flm.classList.add('flare-up');
-            ashDisplay.innerText = inp.value;
+                ashDisplay.innerText = inp.value;
                 inp.value = "";
                 ashDisplay.classList.add('turn-to-ash');
 
                 setTimeout(() => {
                     inp.placeholder = "Muộn phiền đã buông bỏ.";
                 }, 800);
-            setTimeout(() => { flm.classList.remove('flare-up'); }, 2000);
+                setTimeout(() => { flm.classList.remove('flare-up'); }, 2000);
                 setTimeout(() => {
                     ashDisplay.innerText = "";
                     ashDisplay.classList.remove('turn-to-ash');
@@ -920,15 +1231,15 @@
         function sendWish() {
             const fb = document.getElementById('window-feedback');
             const inp = document.getElementById('reflection-input');
-            
-            if(inp && inp.value.trim()) {
+
+            if (inp && inp.value.trim()) {
                 inp.value = "";
-            inp.placeholder = "Đã gửi vào hư không...";
+                inp.placeholder = "Đã gửi vào vũ trụ...";
                 fb.style.opacity = 1;
-            if(windowMeteorEngine) {
-                    for(let i=0; i<5; i++) {
+                if (windowMeteorEngine) {
+                    for (let i = 0; i < 5; i++) {
                         setTimeout(() => windowMeteorEngine.shoot(true), i * 300);
-            }
+                    }
                 }
             }
         }
@@ -944,9 +1255,9 @@
             ];
             const note = document.getElementById('lucky-note');
             const env = document.querySelector('.envelope');
-            if(note.style.display !== 'block') {
+            if (note.style.display !== 'block') {
                 note.innerText = quotes[Math.floor(Math.random() * quotes.length)];
-            note.style.display = 'block';
+                note.style.display = 'block';
                 env.style.opacity = 0.5;
                 env.style.transform = "scale(0.9)";
             }
@@ -978,8 +1289,8 @@
                 this.x = Math.random() * width;
                 this.y = height;
                 this.destY = Math.random() * (height * 0.3) + height * 0.05;
-                this.speed = Math.random() * 5 + 15; 
-                this.vx = (Math.random() - 0.5) * 4; 
+                this.speed = Math.random() * 5 + 15;
+                this.vx = (Math.random() - 0.5) * 4;
                 this.vy = -this.speed;
                 this.color = '255, 255, 255';
                 this.trail = [];
@@ -990,8 +1301,8 @@
                 this.vy += this.gravity;
                 this.x += this.vx;
                 this.y += this.vy;
-                this.trail.push({x: this.x, y: this.y, alpha: 1});
-                if(this.trail.length > 8) this.trail.shift();
+                this.trail.push({ x: this.x, y: this.y, alpha: 1 });
+                if (this.trail.length > 8) this.trail.shift();
                 this.trail.forEach(t => t.alpha -= 0.15);
                 if (this.vy >= -2 || this.y <= this.destY) {
                     this.dead = true;
@@ -1000,7 +1311,7 @@
             }
             draw() {
                 ctx.beginPath();
-                for(let i=0; i<this.trail.length; i++) {
+                for (let i = 0; i < this.trail.length; i++) {
                     const t = this.trail[i];
                     ctx.fillStyle = `rgba(${this.color}, ${t.alpha})`;
                     ctx.fillRect(t.x, t.y, 2, 2);
@@ -1009,7 +1320,7 @@
                 ctx.fillRect(this.x, this.y, 3, 3);
             }
         }
-        
+
         // --- UPDATED CLASS PARTICLE ---
         class Particle {
             constructor(x, y, v, colorArr, type) {
@@ -1018,32 +1329,29 @@
                 this.vx = v.x; this.vy = v.y;
                 this.rgb = colorArr;
                 this.alpha = 1; this.friction = 0.95;
-                this.gravity = 0.12; 
-                
+                this.gravity = 0.12;
+
                 // --- THAY ĐỔI: Life ngắn hơn để giảm lag (khoảng 2-2.5s @ 60fps) ---
-                this.life = 120 + Math.random() * 40; 
+                this.life = 120 + Math.random() * 40;
                 // Decay tự động tính để fade out vừa khít với life
                 this.decay = this.alpha / this.life;
-                
                 this.type = type;
             }
             update() {
                 this.vx *= this.friction;
                 this.vy *= this.friction;
-                this.vy += this.gravity; 
-                this.x += this.vx; 
+                this.vy += this.gravity;
+                this.x += this.vx;
                 this.y += this.vy;
-                
                 // Giảm tuổi thọ và độ mờ
                 this.life--;
                 this.alpha -= this.decay;
-                
-                if(this.type === 'strobe' && Math.random() > 0.8) this.alpha = 1;
+
+                if (this.type === 'strobe' && Math.random() > 0.8) this.alpha = 1;
             }
             draw() {
                 // Không vẽ nếu đã mờ
                 if (this.alpha <= 0.05) return;
-                
                 ctx.strokeStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
                 ctx.lineWidth = 1.5; ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
@@ -1051,48 +1359,51 @@
                 ctx.stroke();
             }
         }
-        
+
         function createExplosion(x, y) {
             const types = ['sphere', 'starburst', 'ring'];
             const type = types[Math.floor(Math.random() * types.length)];
             const keys = Object.keys(palettes);
             const palette = palettes[keys[Math.floor(Math.random() * keys.length)]];
             // Giảm số lượng hạt một chút để tối ưu mobile (80-130 hạt)
-            const count = Math.floor(Math.random() * 50) + 80; 
+            const count = Math.floor(Math.random() * 50) + 80;
             for (let i = 0; i < count; i++) {
                 let speed = Math.random() * 8 + 2;
                 let angle = Math.random() * Math.PI * 2;
                 let vx, vy;
-                if (type === 'ring') { speed = 6 + Math.random(); angle = (Math.PI * 2 / count) * i;
-                } 
+                if (type === 'ring') {
+                    speed = 6 + Math.random();
+                    angle = (Math.PI * 2 / count) * i;
+                }
                 vx = Math.cos(angle) * speed;
                 vy = Math.sin(angle) * speed;
-                if(type === 'starburst') { vx *= Math.random() * 0.5 + 0.5;
-                vy *= Math.random() * 0.5 + 0.5; }
+                if (type === 'starburst') {
+                    vx *= Math.random() * 0.5 + 0.5;
+                    vy *= Math.random() * 0.5 + 0.5;
+                }
                 const color = (Math.random() > 0.3) ?
-                palette.base : palette.secondary;
+                    palette.base : palette.secondary;
                 const pType = (Math.random() > 0.8) ? 'strobe' : 'normal';
-                particles.push(new Particle(x, y, {x: vx, y: vy}, color, pType));
+                particles.push(new Particle(x, y, { x: vx, y: vy }, color, pType));
             }
             ctx.globalCompositeOperation = 'lighter';
             ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI*2); ctx.fill();
+            ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI * 2); ctx.fill();
         }
-        
+
         function loop() {
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.2)'; 
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.2)';
             ctx.fillRect(0, 0, width, height);
             ctx.globalCompositeOperation = 'lighter';
-            
             if (fireworksActive && Math.random() < 0.05) rockets.push(new Rocket());
-            
+
             for (let i = rockets.length - 1; i >= 0; i--) {
                 rockets[i].update();
                 rockets[i].draw();
                 if (rockets[i].dead) rockets.splice(i, 1);
             }
-            
+
             // --- UPDATED LOOP: Clean up particles aggressively ---
             for (let i = particles.length - 1; i >= 0; i--) {
                 particles[i].update();
@@ -1105,15 +1416,16 @@
             requestAnimationFrame(loop);
         }
         loop();
-        
+
         function startFinale() {
             fireworksActive = true;
-            for(let k=0; k<15; k++) setTimeout(() => rockets.push(new Rocket()), k*100);
-            
+            for (let k = 0; k < 15; k++) setTimeout(() => rockets.push(new Rocket()), k * 100);
+
             const hny = document.getElementById('happy-new-year');
             hny.style.opacity = 1;
             hny.style.transform = "scale(1.1)";
         }
     </script>
 </body>
+
 </html>
