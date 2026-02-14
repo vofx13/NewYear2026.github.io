@@ -722,18 +722,20 @@
             <div class="letter-footer" id="letter-footer" style="opacity: 0; transition: 1s;">
                 Ký tên: Tui nè (Gửi từ 2026)
             </div>
-            <p id="wait-message"
-                style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic; font-family: 'Lora', serif;">
+            <p id="wait-message" style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic;
+ font-family: 'Lora', serif;">
                 Đợi 1 xíu nhé...
             </p>
         </div>
     </div>
 
     <div id="page-3-choice" class="page">
-        <div class="card"
-            style="text-align: center; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 15px;">
-            <h1 style="font-family: 'Dancing Script', cursive; color: var(--text-gold);">Gửi Gắm Tương Lai</h1>
-            <p style="margin: 20px 0; font-size: clamp(1rem, 3vw, 1.2rem);">Bạn có mong ước gì gửi gắm cho chính mình
+        <div class="card" style="text-align: center;
+ background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 15px;">
+            <h1 style="font-family: 'Dancing Script', cursive;
+ color: var(--text-gold);">Gửi Gắm Tương Lai</h1>
+            <p style="margin: 20px 0;
+ font-size: clamp(1rem, 3vw, 1.2rem);">Bạn có mong ước gì gửi gắm cho chính mình
                 trong tương lai không?</p>
             <div class="choice-btn-group">
                 <button class="btn-general" onclick="startInteractiveMode()">Có chứ</button>
@@ -751,7 +753,8 @@
                     <div class="pot-lid"></div>
                     <div id="steam-container"></div>
                 </div>
-                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong
+                <p style="text-align: center;
+ color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong
                     cầu đang bay lên.</p>
             </section>
 
@@ -761,33 +764,37 @@
                     <div class="flame" id="lamp-flame"></div>
                 </div>
                 <div class="wish-input-wrapper">
-                    <input type="text" class="wish-input" id="wish-input-old"
-                        placeholder="Một nỗi buồn muốn buông bỏ..." autocomplete="off">
+                    <input type="text" class="wish-input" id="wish-input-old" placeholder="Một nỗi 
+ buồn muốn buông bỏ..." autocomplete="off">
                     <div id="ash-display" class="ash-text"></div>
                 </div>
 
-                <button class="btn-general" onclick="lightLamp()" style="display: block; margin: 20px auto;">Thắp đèn &
+                <button class="btn-general" onclick="lightLamp()" style="display: block;
+ margin: 20px auto;">Thắp đèn &
                     Hóa giải</button>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Khung Cửa Nguyện Cầu</h2>
                 <div class="window-frame" id="window-frame">
-                    <div id="stars-layer-window" style="width:100%; height:100%;"></div>
+                    <div id="stars-layer-window" style="width:100%;
+ height:100%;"></div>
                     <canvas id="window-meteor-canvas"></canvas>
                 </div>
-                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..."
-                    style="margin-top:20px; color: #e6dace;"></textarea>
-                <button class="btn-general" onclick="sendWish()" style="display: block; margin: 20px auto;">Gửi niềm hy
+                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..." style="margin-top:20px;
+ color: #e6dace;"></textarea>
+                <button class="btn-general" onclick="sendWish()" style="display: block;
+ margin: 20px auto;">Gửi niềm hy
                     vọng</button>
-                <p id="window-feedback"
-                    style="text-align:center; font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">
+                <p id="window-feedback" style="text-align:center;
+ font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">
                     Vũ trụ đã lắng nghe.</p>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Lộc Đầu Năm</h2>
-                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn
+                <p style="text-align: center;
+ color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn
                     liếng tinh thần cho bạn.</p>
                 <div class="envelope" onclick="openEnvelope()"></div>
                 <div id="lucky-note" class="lucky-note"></div>
@@ -795,7 +802,8 @@
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Cùng nhau ngắm pháo hoa nhé</h2>
-                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Thời khắc rực rỡ nhất đã đến rồi.</p>
+                <p style="text-align: center;
+ color: #e6dace; padding: 0 10px;">Thời khắc rực rỡ nhất đã đến rồi.</p>
                 <button class="btn-general" onclick="goToPage4()">Bắt đầu thôi nào</button>
             </section>
         </div>
@@ -814,10 +822,22 @@
         const bgMusic = document.getElementById('bg-music');
         let musicStarted = false;
 
-        function startMusicOnce() {
+        async function startMusicOnce() {
             if (musicStarted) return;
             bgMusic.volume = 0.6;
-            bgMusic.play().catch(() => { });
+            bgMusic.play().catch(() => {});
+            
+            // --- CẬP NHẬT: NGĂN NGỪA SLEEP (WAKE LOCK API) ---
+            try {
+                if ('wakeLock' in navigator) {
+                    await navigator.wakeLock.request('screen');
+                    console.log('Screen Wake Lock active');
+                }
+            } catch (err) {
+                console.error('Wake Lock error:', err);
+            }
+            // ------------------------------------------------
+
             musicStarted = true;
             document.removeEventListener('click', startMusicOnce);
             document.removeEventListener('touchstart', startMusicOnce);
@@ -967,8 +987,8 @@
         // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
 
         const wishesList = [
-            "Chúc cậu 2026 tới rồi nha, năm của cậu đó, bước vào năm mới với khí thế bùng nổ như nhân vật chính phim thanh xuân. Học tới đâu thấm tới đó, vô phòng thi bật mode chiến thần, làm bài xong chỉ việc đợi tin đậu Nguyện vọng 1 thôi.",
-            "Chúc cậu năm nay thi cử nhẹ tênh như mây bay qua cửa sổ, sĩ tử mà não chạy mượt như wifi full vạch, không lag không giật. Khoanh câu nào chắc câu đó và hiên ngang bước vào Nguyện vọng 1 trong sự trầm trồ của cả hội.",
+            "Năm 2026 tới roi neee, năm của cậu đó,cậu hãy bước vào năm mới với khí thế bùng nổ như nhân vật chính trong bộ phim thanh xuân. Học tới đâu thấm tới đó, vô phòng thi bật mode chiến thần, làm bài xong chỉ việc đợi tin đậu Nguyện vọng 1 thôi.",
+            "Chúc cậu năm nay thi cử nhẹ tênh như mây bay qua cửa sổ, sĩ tử mà não chạy mượt như wifi full vạch, không lag không giật. Khoanh câu nào chắc câu đó và Nguyện Vọng 1 chỉ là cái tên thoii.",
             "Chúc cậu gặp đề xoắn vẫn cười nửa miệng đầy tự tin, vì cậu ôn kỹ lắm rồi nên chẳng gì làm khó nổi. Đậu Nguyện vọng 1 giờ chỉ còn là thủ tục xác nhận, ký cái rẹt là xong.",
             "Chúc cậu bao nhiêu đêm cày bài đổi lại bằng bảng điểm nhìn mà đã mắt, xem xong chỉ muốn chụp màn hình khoe khắp nơi. Và cái kết đẹp nhất chính là đậu Nguyện vọng 1 đúng như dự định ban đầu.",
             "Chúc cậu xem thi cử năm nay như game level cuối đầy thử thách nhưng cực cuốn. Qua màn này là mở khóa danh hiệu tân sinh viên Nguyện vọng 1 liền cho nó oách xà lách.",
@@ -978,73 +998,61 @@
             "Chúc cậu năm nay học vào như nước đổ ly đầy ắp, không rơi giọt nào ra ngoài. Vào phòng thi bung hết skill tích góp bao lâu và rinh luôn suất Nguyện vọng 1.",
             "Chúc cậu bản lĩnh hơn cả áp lực đang bủa vây, vì áp lực thì có đó nhưng cậu còn lớn hơn nhiều. Nguyện vọng 1 đang chờ một người đủ gan và đủ điểm như cậu bước tới.",
             "Chúc cậu làm bài trơn tru từ câu đầu tới câu cuối, không vấp không khựng, viết tới đâu chắc tới đó. Kết quả hiển nhiên là đậu Nguyện vọng 1 trong sự hân hoan.",
-            "Chúc cậu năm nay không đậu cho vui mà đậu cho thật ngầu, bảng điểm nhìn vào là biết ngay chủ nhân của suất Nguyện vọng 1 xịn sò.",
-            "Chúc cậu thi một lần ăn ngay, không cần vòng hai vòng ba làm gì cho mệt. Nguyện vọng 1 chốt đơn trong sự ngỡ ngàng xen lẫn ngưỡng mộ của cả hội bạn.",
-            "Chúc cậu bước ra khỏi phòng thi với nụ cười nửa miệng đầy ẩn ý, vì biết mình đủ điểm đậu Nguyện vọng 1 rồi nên lòng nhẹ tênh.",
-            "Chúc cậu nhớ rằng học bao nhiêu năm không phải để dừng lại giữa đường, đích đến cuối cùng vẫn là Nguyện vọng 1 và cậu chắc chắn chạm tới bằng thực lực.",
-            "Chúc cậu 2026 là năm bứt tốc ngoạn mục, không còn nửa vời nữa. Hoặc là đỉnh cao, hoặc là Nguyện vọng 1, mà thật ra hai cái đó là một.",
-            "Chúc cậu mọi công thức, định lý và bài văn đều nhớ rõ mồn một như in trong đầu. Để rồi Nguyện vọng 1 phải dang tay đón cậu không chần chừ.",
             "Chúc cậu đi thi gặp đúng tủ thì vui hết nấc, gặp ngoài tủ vẫn xử đẹp bình tĩnh. Vì mục tiêu cuối cùng vẫn là đậu Nguyện vọng 1.",
             "Chúc cậu giữ được cái đầu lạnh giữa phòng thi căng thẳng và trái tim nóng đầy quyết tâm. Làm bài xong nhẹ tênh vì biết Nguyện vọng 1 đã trong tầm với.",
-            "Chúc cậu năm nay chỉ có một từ khóa là Đậu, và cụ thể hơn là đậu Nguyện vọng 1 cho nó đã cái nư sau bao ngày cố gắng.",
-            "Chúc cậu cố thêm chút nữa thôi là tới đích rồi, đừng nản giữa chừng. Nguyện vọng 1 không xa như cậu nghĩ, nó đang đứng chờ cậu bước tới.",
-            "Chúc cậu thi mà như đang làm bài tập quen thuộc ở nhà, tay viết thoăn thoắt không suy nghĩ nhiều. Nhẹ nhàng mà vẫn đủ điểm đậu Nguyện vọng 1.",
-            "Chúc cậu không sợ đề khó vì khó với người khác thôi, với cậu đó chỉ là bước đệm để tới Nguyện vọng 1 đầy tự tin.",
-            "Chúc cậu gạt bỏ mọi lần tự nghi ngờ bản thân trước đây, vì giờ là lúc tự tin đậu Nguyện vọng 1 cho cả thế giới biết cậu đỉnh cỡ nào.",
-            "Chúc cậu bảng điểm năm nay đẹp như mơ giữa đêm hè lấp lánh. Và dòng chữ đậu Nguyện vọng 1 sáng lên như spotlight chiếu thẳng vào cậu.",
-            "Chúc cậu đi thi với tâm lý vững như đá tảng giữa sóng gió, thì Nguyện vọng 1 chỉ còn là chuyện sớm muộn không thể khác.",
-            "Chúc cậu học hành nghiêm túc vậy rồi thì kết quả cũng phải nghiêm túc theo, không đậu Nguyện vọng 1 cũng thấy lạ đó nha.",
-            "Chúc cậu thi xong về ngủ một giấc ngon lành không mộng mị, vì biết mình đã làm đủ tốt để đậu Nguyện vọng 1 rồi.",
-            "Chúc cậu xem áp lực chỉ là gia vị cho món chính thêm đậm đà, còn thành công mới là món chính mang tên Nguyện vọng 1.",
-            "Chúc cậu đừng nghĩ nhiều quá làm gì cho mệt, cứ làm hết sức mình. Phần thưởng cuối cùng chắc chắn là Nguyện vọng 1 xứng đáng.",
-            "Chúc cậu đi thi mà tim đập vì tự tin chứ không phải vì lo lắng, và kết quả là đậu Nguyện vọng 1 cực kỳ thuyết phục.",
-            "Chúc cậu học tới mức này rồi thì kết quả cũng phải tương xứng, không đậu Nguyện vọng 1 thì hơi vô lý đó nha.",
-            "Chúc cậu mọi câu hỏi đều quen mặt như bạn thân lâu năm, mọi đáp án đều rõ ràng để Nguyện vọng 1 không còn là ước mơ nữa.",
-            "Chúc cậu xem thi cử chỉ là một cánh cửa nhỏ, và Nguyện vọng 1 chính là căn phòng sáng đèn đang chờ cậu bước vào.",
-            "Chúc cậu đừng để mấy phút căng thẳng làm mất phong độ, vì cậu sinh ra là để đậu Nguyện vọng 1 mà.",
-            "Chúc cậu bước vào phòng thi với niềm tin đầy túi như mang theo bùa may mắn, và bước ra với suất Nguyện vọng 1 trong tay.",
-            "Chúc cậu năm nay là năm của sự nghiêm túc và bứt phá ngoạn mục, phần thưởng xứng đáng nhất chính là Nguyện vọng 1.",
-            "Chúc cậu cày bài bao ngày đâu thể uổng phí, nên Nguyện vọng 1 chắc chắn phải gọi đúng tên cậu.",
-            "Chúc cậu nhìn đề mà thấy quen như gặp bạn cũ lâu ngày, làm xong là đủ điểm đậu Nguyện vọng 1 luôn khỏi lo.",
-            "Chúc cậu không cần may mắn quá nhiều vì thực lực của cậu đủ để chạm tới Nguyện vọng 1 đầy thuyết phục.",
-            "Chúc cậu thi xong mà vẫn cười tươi rói thì chắc chắn Nguyện vọng 1 đã nằm trong kế hoạch rồi.",
-            "Chúc cậu năm nay mọi thứ diễn ra đúng kịch bản đẹp nhất, ôn kỹ làm tốt và đậu Nguyện vọng 1 như phim có hậu.",
-            "Chúc cậu đề có đánh đố chút cũng không sao, vì cậu đủ tỉnh táo để xử lý và tiến thẳng vào Nguyện vọng 1.",
-            "Chúc cậu bao nhiêu mồ hôi năm nay sẽ đổi lại bằng hai chữ đậu rực rỡ, cụ thể là đậu Nguyện vọng 1.",
-            "Chúc cậu khi tra điểm không cần hít thở sâu làm gì, vì biết chắc mình đậu Nguyện vọng 1 rồi.",
-            "Chúc cậu năm nay không cần khiêm tốn nữa, cứ tự tin vì cậu xứng đáng với Nguyện vọng 1.",
-            "Chúc cậu xem đi thi là một hành trình ngắn nhưng ý nghĩa, còn đậu Nguyện vọng 1 là bước ngoặt dài lâu phía trước.",
-            "Chúc cậu mọi nỗ lực âm thầm suốt thời gian qua được đền đáp bằng một suất Nguyện vọng 1 thật rực rỡ.",
-            "Chúc cậu tin mình đi vì với phong độ hiện tại thì Nguyện vọng 1 khó mà thoát khỏi tay cậu lắm.",
-            "Chúc cậu kết lại hành trình này bằng một cú chốt hạ ngoạn mục, cố nốt đoạn cuối này rồi Nguyện vọng 1 sẽ chính thức thuộc về cậu."
+            "Cậu cố thêm xíu nữa thui là chạm đích rùi đó nhaaa, đừng có nản giữa chừng nghe hongg. Nguyện vọng 1 hông xa như cậu tưởng đâu, nó đứng đó đợi cậu chạy cái vèo tới ôm liền á.",
+            "Chúc cậu đi thi mà feel như đang làm bài tập quen thuộc ở nhà, tay viết lia lia không cần load lâu. Nhẹ nhàng mà điểm vẫn cao chót vót, đủ combo đậu Nguyện vọng 1 luôn.",
+            "Chúc cậu gặp đề khó cũng không rén nha, vì khó với người ta thôi chứ với cậu là chuyện nhỏ xíu. Coi như bước đệm để bay thẳng tới Nguyện vọng 1 cho nó ngầu.",
+            "Chúc cậu đi thi tâm lý vững vàng như trùm cuối, sóng gió cỡ nào cũng không xi nhê. Nguyện vọng 1 với cậu chỉ là chuyện sớm muộn thui à.",
+            "Chúc cậu thi xong về ngủ một giấc ngon ơi là ngon, không mộng mị không lo nghĩ. Vì trong lòng biết rõ mình đủ điểm đậu Nguyện vọng 1 rùi đó.",
+            "Chúc cậu coi áp lực chỉ là tí gia vị cho đời thêm đậm đà, còn món chính năm nay chắc chắn là đậu Nguyện vọng 1 cho đã cái nư.",
+            "Chúc cậu đừng overthink chi cho mệt nè, cứ làm hết sức mình là auto ổn áp. Phần thưởng cuối cùng kiểu gì cũng là đậu Nguyện vọng 1 roiii.",
+            "Chúc cậu đi thi mà tim đập thình thịch vì tự tin chứ không phải vì run. Kết quả về cái là đậu Nguyện vọng 1 thuyết phục khỏi bàn.",
+            "Chúc cậu vô phòng thi cái là thấy câu hỏi quen ơi là quen như bạn thân lâu năm. Đáp án hiện rõ mồn một để Nguyện vọng 1 không còn là ước mơ xa xôi nữa.",
+            "Cậu nhớ nha đừng để vài phút căng thẳng làm tụt mood, vì cậu sinh ra là để làm học bá. Vậy nên Nguyện vọng 1 chỉ là cái tên thoii.",
+            "Chúc cậu bước vào phòng thi với niềm tin đầy túi, vibe tự tin ngập tràn như mang bùa may mắn xịn sò. Bước ra là cầm chắc suất Nguyện vọng 1 trong tay.",
+            "Chúc cậu biết hong nè, năm nay là năm bứt phá đỉnh của chóp luôn đó. Học chăm chỉ hết mình và cái kết xịn nhất vẫn là đậu Nguyện vọng 1 nhoaaa.",
+            "Nhìn tớ nèee, tớ sẽ buff nhẹ cho đề thi nhìn cái là quen liền như gặp bestie lâu ngày hong gặp. Làm xong phát là đủ điểm đậu Nguyện vọng 1 luôn, khỏi cần lo xa chi cho mệt nè.",
+            "Chúc cậu không cần trông chờ may mắn quá nhiều đâu nha, vì thực lực cậu đỉnh của chóp lắm rùi. Tự tin cái là chạm tới Nguyện vọng 1 cái vèo, thuyết phục hết nước chấm luôn.",
+            "Chúc cậu năm nay mọi thứ chạy đúng kịch bản xịn sò nhất, ôn bài vô đầu mượt mà, làm bài không trật nhịp. Kết phim có hậu là đậu Nguyện vọng 1 cái rụp luôn.",
+            "Tớ biết năm nay đề có vẻ khoai đó, nhưng khoai với người ta thôi chứ với cậu là chuyện nhỏ xíu à. Có đánh đố chút cũng không sao, cậu vẫn đủ tỉnh táo để xử đẹp và tiến thẳng vô ngôi trường mơ ước nhaaa.",
+            "Chúc cậu coi đi thi như một chuyến phiêu lưu ngắn mà siêu ý nghĩa, mỗi câu hỏi là một trạm dừng thú vị. Và đậu Nguyện vọng 1 chính là cột mốc xịn sò mở ra cả bầu trời phía trước.",
+            "Tớ tin mấy nỗ lực âm thầm suốt thời gian qua của cậu không hề vô nghĩa đâu nhaa. Kiểu gì cũng được đền đáp bằng một suất vô ngôi trường mơ ước nghe mà đã cái nư luôn.",
+            "Chúc cậu chốt lại hành trình này bằng một cú finish đỉnh cao, làm bài xong mà vẫn còn dư tự tin. Cố nốt đoạn cuối này thôi là Nguyện vọng 1 chính thức về tay cậu liền á."
+
         ];
 
 
 
 
         let userName = "";
+
         function typeWriter(text, elementId, speed = 40) {
             let i = 0;
             const element = document.getElementById(elementId);
             element.innerHTML = "";
 
 
+
             function type() {
                 if (i < text.length) {
                     let char = text.charAt(i);
                     if (char === '\n') {
-                        element.innerHTML += '<br>';
+                        element.innerHTML +=
+                            '<br>';
 
                     } else {
                         element.innerHTML += char;
                     }
                     i++;
 
+
                     setTimeout(type, speed);
                 } else {
                     document.getElementById('letter-footer').style.opacity = 1;
                     const waitMsg = document.getElementById('wait-message');
                     waitMsg.style.display = 'block';
+
 
                     waitMsg.style.animation = 'twinkle 1s infinite alternate';
                     // --- UPDATE: Tự động chuyển trang sau 5 giây ---
@@ -1071,6 +1079,7 @@
 
                 if (showId === 'page-3-interactive') {
                     s.style.display = 'block';
+
                     s.classList.add('page-enter');
                     setTimeout(() => s.classList.remove('page-enter'), 1000);
 
@@ -1079,13 +1088,18 @@
 
 
                     setTimeout(() => {
+
                         const sections = document.querySelectorAll('.interactive-section');
                         const observer = new IntersectionObserver((entries) => {
 
                             entries.forEach(entry => {
+
                                 if (entry.isIntersecting) entry.target.classList.add('visible');
                             });
-                        }, { threshold: 0.1 }); // Giảm threshold cho mobile dễ trigger
+                        }, {
+                            threshold: 0.1
+                        }); // Giảm threshold cho mobile dễ trigger
+
 
                         sections.forEach(sec => observer.observe(sec));
                     }, 100);
@@ -1118,6 +1132,7 @@
         }
 
         let windowMeteorEngine = null;
+
         function startInteractiveMode() {
             const choice = document.getElementById('page-3-choice');
             const interactive = document.getElementById('page-3-interactive');
@@ -1130,21 +1145,27 @@
                 interactive.style.display = 'block';
                 interactive.scrollTop = 0; // Đảm bảo cuộn về đầu
 
+
                 interactive.classList.add('page-enter');
                 setTimeout(() => interactive.classList.remove('page-enter'), 1000);
 
-                initSteam(); initWindowStars();
+                initSteam();
+                initWindowStars();
 
                 windowMeteorEngine = new MeteorEngine('window-meteor-canvas', true);
 
 
                 const sections = document.querySelectorAll('.interactive-section');
                 const observer = new IntersectionObserver((entries) => {
+
                     entries.forEach(entry => {
                         if (entry.isIntersecting) entry.target.classList.add('visible');
                     });
 
-                }, { threshold: 0.1 });
+                }, {
+                    threshold: 0.1
+                });
+
                 sections.forEach(sec => observer.observe(sec));
             }, 800);
         }
@@ -1164,6 +1185,7 @@
                     const p4 = document.getElementById('page-4');
 
                     p4.classList.add('active', 'page-enter');
+
                     setTimeout(() => p4.classList.remove('page-enter'), 1000);
                 }, 800);
             }
@@ -1179,6 +1201,7 @@
                 const el = document.createElement('div');
                 el.className = 'steam';
                 el.innerText = wishes[Math.floor(Math.random() * wishes.length)];
+
 
 
                 el.style.left = (50 + (Math.random() * 20 - 10)) + '%';
@@ -1201,7 +1224,9 @@
                 setTimeout(() => {
                     inp.placeholder = "Muộn phiền đã buông bỏ.";
                 }, 800);
-                setTimeout(() => { flm.classList.remove('flare-up'); }, 2000);
+                setTimeout(() => {
+                    flm.classList.remove('flare-up');
+                }, 2000);
                 setTimeout(() => {
                     ashDisplay.innerText = "";
                     ashDisplay.classList.remove('turn-to-ash');
@@ -1266,13 +1291,100 @@
             }
         }
 
-        // --- 4. FIREWORKS ENGINE (UPDATED FOR PERFORMANCE) ---
+        // --- 4. FIREWORKS ENGINE (ADAPTIVE HARDWARE ACCELERATION) ---
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
         let rockets = [];
         let fireworksActive = false;
+
+        // --- Hardware Analysis & Configuration ---
+        const SystemConfig = {
+            tier: 'medium', // Default là Medium
+            // Cấu hình chi tiết cho từng Tier
+            settings: {
+                high: {
+                    particleCount: { min: 100, max: 180 },
+                    decayRate: 0.012,
+                    rocketTrailLen: 10,
+                    shadows: true,
+                    spawnChance: 0.06
+                },
+                medium: {
+                    particleCount: { min: 60, max: 100 },
+                    decayRate: 0.02,
+                    rocketTrailLen: 6,
+                    shadows: false, // Tắt bóng để tối ưu
+                    spawnChance: 0.04
+                },
+                low: {
+                    particleCount: { min: 30, max: 60 },
+                    decayRate: 0.035,
+                    rocketTrailLen: 3,
+                    shadows: false,
+                    spawnChance: 0.03
+                }
+            },
+            
+            // Heuristic detection algorithm
+            detect: function() {
+                const cores = navigator.hardwareConcurrency || 4; // Số nhân CPU
+                const ram = navigator.deviceMemory || 8; // RAM (GB) - Chrome only
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
+                // Thuật toán chấm điểm đơn giản
+                let score = cores * 1.5 + ram; 
+                if (isMobile) score *= 0.6; // Giảm điểm nếu là mobile do giới hạn tản nhiệt
+
+                console.log(`Hardware Scan: Cores=${cores}, RAM=~${ram}GB, Mobile=${isMobile}, Score=${score.toFixed(1)}`);
+
+                // CẬP NHẬT: Luôn giới hạn ở mức Medium dù máy mạnh (để tránh nóng máy)
+                if (score < 6) this.setTier('low');
+                else this.setTier('medium'); // Không set High nữa
+            },
+
+            setTier: function(t) {
+                console.log(`Switched Fireworks to [${t.toUpperCase()}] tier.`);
+                this.tier = t;
+            },
+
+            getCurrent: function() {
+                return this.settings[this.tier];
+            }
+        };
+
+        // Kích hoạt quét phần cứng
+        SystemConfig.detect();
+
+        // --- FPS Monitoring for Dynamic Downgrade ---
+        const FPSMonitor = {
+            lastTime: 0,
+            frames: 0,
+            history: [],
+            check: function(time) {
+                if (!this.lastTime) { this.lastTime = time; return; }
+                const delta = time - this.lastTime;
+                
+                if (delta > 0) {
+                    const fps = 1000 / delta;
+                    this.history.push(fps);
+                    if (this.history.length > 50) this.history.shift(); // Giữ 50 frame gần nhất
+
+                    // Tính trung bình
+                    const avg = this.history.reduce((a,b)=>a+b,0) / this.history.length;
+
+                    // Nếu FPS trung bình < 30 trong 50 frame liên tiếp và chưa ở Low tier
+                    if (this.history.length > 40 && avg < 30 && SystemConfig.tier !== 'low') {
+                        if (SystemConfig.tier === 'high') SystemConfig.setTier('medium');
+                        else SystemConfig.setTier('low');
+                        this.history = []; // Reset để tránh chuyển liên tục
+                    }
+                }
+                this.lastTime = time;
+            }
+        };
+
         function resize() {
             width = window.innerWidth;
             height = window.innerHeight;
@@ -1281,14 +1393,17 @@
         }
         window.addEventListener('resize', resize);
         resize();
+
         const palettes = {
             pureWhite: { base: [255, 255, 255], secondary: [200, 200, 255] },
             gold: { base: [255, 215, 0], secondary: [255, 250, 200] },
             fire: { base: [255, 69, 0], secondary: [255, 165, 0] },
             cool: { base: [0, 191, 255], secondary: [255, 255, 255] }
         };
+
         class Rocket {
             constructor() {
+                const conf = SystemConfig.getCurrent();
                 this.x = Math.random() * width;
                 this.y = height;
                 this.destY = Math.random() * (height * 0.3) + height * 0.05;
@@ -1297,6 +1412,7 @@
                 this.vy = -this.speed;
                 this.color = '255, 255, 255';
                 this.trail = [];
+                this.trailMax = conf.rocketTrailLen; // Dùng config
                 this.dead = false;
                 this.gravity = 0.25;
             }
@@ -1305,7 +1421,7 @@
                 this.x += this.vx;
                 this.y += this.vy;
                 this.trail.push({ x: this.x, y: this.y, alpha: 1 });
-                if (this.trail.length > 8) this.trail.shift();
+                if (this.trail.length > this.trailMax) this.trail.shift();
                 this.trail.forEach(t => t.alpha -= 0.15);
                 if (this.vy >= -2 || this.y <= this.destY) {
                     this.dead = true;
@@ -1324,20 +1440,18 @@
             }
         }
 
-        // --- UPDATED CLASS PARTICLE ---
         class Particle {
             constructor(x, y, v, colorArr, type) {
+                const conf = SystemConfig.getCurrent();
                 this.x = x;
                 this.y = y;
-                this.vx = v.x; this.vy = v.y;
+                this.vx = v.x;
+                this.vy = v.y;
                 this.rgb = colorArr;
-                this.alpha = 1; this.friction = 0.95;
+                this.alpha = 1;
+                this.friction = 0.95;
                 this.gravity = 0.12;
-
-                // --- THAY ĐỔI: Life ngắn hơn để giảm lag (khoảng 2-2.5s @ 60fps) ---
-                this.life = 120 + Math.random() * 40;
-                // Decay tự động tính để fade out vừa khít với life
-                this.decay = this.alpha / this.life;
+                this.decay = conf.decayRate; // Dùng config
                 this.type = type;
             }
             update() {
@@ -1346,30 +1460,41 @@
                 this.vy += this.gravity;
                 this.x += this.vx;
                 this.y += this.vy;
-                // Giảm tuổi thọ và độ mờ
-                this.life--;
                 this.alpha -= this.decay;
-
                 if (this.type === 'strobe' && Math.random() > 0.8) this.alpha = 1;
             }
             draw() {
-                // Không vẽ nếu đã mờ
                 if (this.alpha <= 0.05) return;
+                const conf = SystemConfig.getCurrent();
+                
                 ctx.strokeStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
-                ctx.lineWidth = 1.5; ctx.beginPath();
+                ctx.lineWidth = 1.5;
+                
+                // Chỉ vẽ bóng nếu config cho phép
+                if (conf.shadows) {
+                    ctx.shadowBlur = 4;
+                    ctx.shadowColor = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
+                }
+
+                ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
                 ctx.lineTo(this.x - this.vx * 3, this.y - this.vy * 3);
                 ctx.stroke();
+                
+                ctx.shadowBlur = 0; // Reset
             }
         }
 
         function createExplosion(x, y) {
+            const conf = SystemConfig.getCurrent();
             const types = ['sphere', 'starburst', 'ring'];
             const type = types[Math.floor(Math.random() * types.length)];
             const keys = Object.keys(palettes);
             const palette = palettes[keys[Math.floor(Math.random() * keys.length)]];
-            // Giảm số lượng hạt một chút để tối ưu mobile (80-130 hạt)
-            const count = Math.floor(Math.random() * 50) + 80;
+            
+            // Số lượng hạt dựa trên config tier
+            const count = Math.floor(Math.random() * (conf.particleCount.max - conf.particleCount.min)) + conf.particleCount.min;
+
             for (let i = 0; i < count; i++) {
                 let speed = Math.random() * 8 + 2;
                 let angle = Math.random() * Math.PI * 2;
@@ -1384,22 +1509,32 @@
                     vx *= Math.random() * 0.5 + 0.5;
                     vy *= Math.random() * 0.5 + 0.5;
                 }
-                const color = (Math.random() > 0.3) ?
-                    palette.base : palette.secondary;
+                const color = (Math.random() > 0.3) ? palette.base : palette.secondary;
                 const pType = (Math.random() > 0.8) ? 'strobe' : 'normal';
                 particles.push(new Particle(x, y, { x: vx, y: vy }, color, pType));
             }
-            ctx.globalCompositeOperation = 'lighter';
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            ctx.beginPath(); ctx.arc(x, y, 30, 0, Math.PI * 2); ctx.fill();
+
+            // Flash effect (chỉ vẽ nếu máy không quá yếu)
+            if (conf.shadows) {
+                ctx.globalCompositeOperation = 'lighter';
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.beginPath();
+                ctx.arc(x, y, 40, 0, Math.PI * 2);
+                ctx.fill();
+            }
         }
 
-        function loop() {
+        function loop(timestamp) {
+            // Kiểm tra FPS để điều chỉnh
+            FPSMonitor.check(timestamp);
+            const conf = SystemConfig.getCurrent();
+
             ctx.globalCompositeOperation = 'source-over';
             ctx.fillStyle = 'rgba(10, 10, 10, 0.2)';
             ctx.fillRect(0, 0, width, height);
             ctx.globalCompositeOperation = 'lighter';
-            if (fireworksActive && Math.random() < 0.05) rockets.push(new Rocket());
+
+            if (fireworksActive && Math.random() < conf.spawnChance) rockets.push(new Rocket());
 
             for (let i = rockets.length - 1; i >= 0; i--) {
                 rockets[i].update();
@@ -1407,22 +1542,20 @@
                 if (rockets[i].dead) rockets.splice(i, 1);
             }
 
-            // --- UPDATED LOOP: Clean up particles aggressively ---
             for (let i = particles.length - 1; i >= 0; i--) {
                 particles[i].update();
                 particles[i].draw();
-                // Xóa hạt nếu hết tuổi thọ hoặc đã mờ hẳn
-                if (particles[i].life <= 0 || particles[i].alpha <= 0.05) {
+                if (particles[i].alpha <= 0.05) {
                     particles.splice(i, 1);
                 }
             }
             requestAnimationFrame(loop);
         }
-        loop();
+        requestAnimationFrame(loop);
 
         function startFinale() {
             fireworksActive = true;
-            for (let k = 0; k < 15; k++) setTimeout(() => rockets.push(new Rocket()), k * 100);
+            for (let k = 0; k < 10; k++) setTimeout(() => rockets.push(new Rocket()), k * 100);
 
             const hny = document.getElementById('happy-new-year');
             hny.style.opacity = 1;
