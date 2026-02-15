@@ -825,8 +825,8 @@
         async function startMusicOnce() {
             if (musicStarted) return;
             bgMusic.volume = 0.6;
-            bgMusic.play().catch(() => {});
-            
+            bgMusic.play().catch(() => { });
+
             // --- CẬP NHẬT: NGĂN NGỪA SLEEP (WAKE LOCK API) ---
             try {
                 if ('wakeLock' in navigator) {
@@ -987,40 +987,35 @@
         // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
 
         const wishesList = [
-            "Năm 2026 tới roi neee, năm của cậu đó,cậu hãy bước vào năm mới với khí thế bùng nổ như nhân vật chính trong bộ phim thanh xuân. Học tới đâu thấm tới đó, vô phòng thi bật mode chiến thần, làm bài xong chỉ việc đợi tin đậu Nguyện vọng 1 thôi.",
-            "Chúc cậu năm nay thi cử nhẹ tênh như mây bay qua cửa sổ, sĩ tử mà não chạy mượt như wifi full vạch, không lag không giật. Khoanh câu nào chắc câu đó và Nguyện Vọng 1 chỉ là cái tên thoii.",
-            "Chúc cậu gặp đề xoắn vẫn cười nửa miệng đầy tự tin, vì cậu ôn kỹ lắm rồi nên chẳng gì làm khó nổi. Đậu Nguyện vọng 1 giờ chỉ còn là thủ tục xác nhận, ký cái rẹt là xong.",
-            "Chúc cậu bao nhiêu đêm cày bài đổi lại bằng bảng điểm nhìn mà đã mắt, xem xong chỉ muốn chụp màn hình khoe khắp nơi. Và cái kết đẹp nhất chính là đậu Nguyện vọng 1 đúng như dự định ban đầu.",
-            "Chúc cậu xem thi cử năm nay như game level cuối đầy thử thách nhưng cực cuốn. Qua màn này là mở khóa danh hiệu tân sinh viên Nguyện vọng 1 liền cho nó oách xà lách.",
-            "Chúc cậu đi thi với tâm thế chill như đang đi dạo, nhưng làm bài thì cực gắt không trượt phát nào. Điểm về cao chót vót, Nguyện vọng 1 gọi tên cái rụp nghe mà đã.",
-            "Chúc cậu giữ được bình tĩnh giữa phòng thi đông người và áp lực bao quanh, vì cậu đủ giỏi rồi. Chỉ cần thêm chút tự tin là vé Nguyện vọng 1 nằm gọn trong tay.",
-            "Chúc cậu thi xong tự tin tám phần, xem điểm xong đủ mười phần vì đã đậu Nguyện vọng 1 thật sự, khỏi cần đoán già đoán non hay suy nghĩ lung tung.",
-            "Chúc cậu năm nay học vào như nước đổ ly đầy ắp, không rơi giọt nào ra ngoài. Vào phòng thi bung hết skill tích góp bao lâu và rinh luôn suất Nguyện vọng 1.",
-            "Chúc cậu bản lĩnh hơn cả áp lực đang bủa vây, vì áp lực thì có đó nhưng cậu còn lớn hơn nhiều. Nguyện vọng 1 đang chờ một người đủ gan và đủ điểm như cậu bước tới.",
-            "Chúc cậu làm bài trơn tru từ câu đầu tới câu cuối, không vấp không khựng, viết tới đâu chắc tới đó. Kết quả hiển nhiên là đậu Nguyện vọng 1 trong sự hân hoan.",
-            "Chúc cậu đi thi gặp đúng tủ thì vui hết nấc, gặp ngoài tủ vẫn xử đẹp bình tĩnh. Vì mục tiêu cuối cùng vẫn là đậu Nguyện vọng 1.",
-            "Chúc cậu giữ được cái đầu lạnh giữa phòng thi căng thẳng và trái tim nóng đầy quyết tâm. Làm bài xong nhẹ tênh vì biết Nguyện vọng 1 đã trong tầm với.",
-            "Cậu cố thêm xíu nữa thui là chạm đích rùi đó nhaaa, đừng có nản giữa chừng nghe hongg. Nguyện vọng 1 hông xa như cậu tưởng đâu, nó đứng đó đợi cậu chạy cái vèo tới ôm liền á.",
-            "Chúc cậu đi thi mà feel như đang làm bài tập quen thuộc ở nhà, tay viết lia lia không cần load lâu. Nhẹ nhàng mà điểm vẫn cao chót vót, đủ combo đậu Nguyện vọng 1 luôn.",
-            "Chúc cậu gặp đề khó cũng không rén nha, vì khó với người ta thôi chứ với cậu là chuyện nhỏ xíu. Coi như bước đệm để bay thẳng tới Nguyện vọng 1 cho nó ngầu.",
-            "Chúc cậu đi thi tâm lý vững vàng như trùm cuối, sóng gió cỡ nào cũng không xi nhê. Nguyện vọng 1 với cậu chỉ là chuyện sớm muộn thui à.",
-            "Chúc cậu thi xong về ngủ một giấc ngon ơi là ngon, không mộng mị không lo nghĩ. Vì trong lòng biết rõ mình đủ điểm đậu Nguyện vọng 1 rùi đó.",
-            "Chúc cậu coi áp lực chỉ là tí gia vị cho đời thêm đậm đà, còn món chính năm nay chắc chắn là đậu Nguyện vọng 1 cho đã cái nư.",
-            "Chúc cậu đừng overthink chi cho mệt nè, cứ làm hết sức mình là auto ổn áp. Phần thưởng cuối cùng kiểu gì cũng là đậu Nguyện vọng 1 roiii.",
-            "Chúc cậu đi thi mà tim đập thình thịch vì tự tin chứ không phải vì run. Kết quả về cái là đậu Nguyện vọng 1 thuyết phục khỏi bàn.",
-            "Chúc cậu vô phòng thi cái là thấy câu hỏi quen ơi là quen như bạn thân lâu năm. Đáp án hiện rõ mồn một để Nguyện vọng 1 không còn là ước mơ xa xôi nữa.",
-            "Cậu nhớ nha đừng để vài phút căng thẳng làm tụt mood, vì cậu sinh ra là để làm học bá. Vậy nên Nguyện vọng 1 chỉ là cái tên thoii.",
-            "Chúc cậu bước vào phòng thi với niềm tin đầy túi, vibe tự tin ngập tràn như mang bùa may mắn xịn sò. Bước ra là cầm chắc suất Nguyện vọng 1 trong tay.",
-            "Chúc cậu biết hong nè, năm nay là năm bứt phá đỉnh của chóp luôn đó. Học chăm chỉ hết mình và cái kết xịn nhất vẫn là đậu Nguyện vọng 1 nhoaaa.",
-            "Nhìn tớ nèee, tớ sẽ buff nhẹ cho đề thi nhìn cái là quen liền như gặp bestie lâu ngày hong gặp. Làm xong phát là đủ điểm đậu Nguyện vọng 1 luôn, khỏi cần lo xa chi cho mệt nè.",
-            "Chúc cậu không cần trông chờ may mắn quá nhiều đâu nha, vì thực lực cậu đỉnh của chóp lắm rùi. Tự tin cái là chạm tới Nguyện vọng 1 cái vèo, thuyết phục hết nước chấm luôn.",
-            "Chúc cậu năm nay mọi thứ chạy đúng kịch bản xịn sò nhất, ôn bài vô đầu mượt mà, làm bài không trật nhịp. Kết phim có hậu là đậu Nguyện vọng 1 cái rụp luôn.",
-            "Tớ biết năm nay đề có vẻ khoai đó, nhưng khoai với người ta thôi chứ với cậu là chuyện nhỏ xíu à. Có đánh đố chút cũng không sao, cậu vẫn đủ tỉnh táo để xử đẹp và tiến thẳng vô ngôi trường mơ ước nhaaa.",
-            "Chúc cậu coi đi thi như một chuyến phiêu lưu ngắn mà siêu ý nghĩa, mỗi câu hỏi là một trạm dừng thú vị. Và đậu Nguyện vọng 1 chính là cột mốc xịn sò mở ra cả bầu trời phía trước.",
-            "Tớ tin mấy nỗ lực âm thầm suốt thời gian qua của cậu không hề vô nghĩa đâu nhaa. Kiểu gì cũng được đền đáp bằng một suất vô ngôi trường mơ ước nghe mà đã cái nư luôn.",
-            "Chúc cậu chốt lại hành trình này bằng một cú finish đỉnh cao, làm bài xong mà vẫn còn dư tự tin. Cố nốt đoạn cuối này thôi là Nguyện vọng 1 chính thức về tay cậu liền á."
-
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nèee. Năm của cậu đó, bước vào năm mới với khí thế bùng nổ như nhân vật chính thanh xuân, vô phòng thi bật mode chiến thần và đợi tin đậu Nguyện vọng 1 thôi.",
+            "Chúc cậu năm mới 2026 luôn tràn đầy niềm vui, hạnh phúc và bình an trong từng ngày. Thi cử năm nay nhẹ tênh như mây bay, não chạy mượt như wifi full vạch, khoanh câu nào chắc câu đó và Nguyện vọng 1 chỉ còn là thủ tục.",
+            "Chúc cậu năm mới 2026 thật rực rỡ, hạnh phúc và bình an hết nấc. Đi thi tâm thế chill nhưng làm bài cực gắt, điểm cao chót vót và Nguyện vọng 1 gọi tên cái rụp nghe mà đã.",
+            "Chúc cậu năm mới 2026 luôn an yên, vui vẻ và ngập tràn tiếng cười. Giữ bình tĩnh giữa phòng thi đông người, thêm chút tự tin là vé Nguyện vọng 1 nằm gọn trong tay liền.",
+            "Chúc cậu năm mới 2026 hạnh phúc đủ đầy và bình an trong mọi khoảnh khắc. Thi xong tự tin tám phần, xem điểm đủ mười phần vì đã đậu Nguyện vọng 1 thật sự.",
+            "Chúc cậu năm mới 2026 thật vui, thật ấm áp và bình an dài dài. Học vào như nước đổ ly đầy ắp, vào phòng thi bung hết skill và rinh luôn suất Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 tràn đầy năng lượng tích cực, hạnh phúc và bình an mỗi sáng thức dậy. Bản lĩnh hơn mọi áp lực và hiên ngang bước tới Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 luôn mỉm cười, hạnh phúc và an nhiên giữa bộn bề. Làm bài trơn tru từ câu đầu tới câu cuối và đậu Nguyện vọng 1 trong sự hân hoan.",
+            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an trong tim. Gặp đúng tủ thì vui hết nấc, gặp ngoài tủ vẫn xử đẹp và tiến thẳng tới Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 rộn ràng tiếng cười, hạnh phúc đủ đầy và bình an vững chắc. Giữ đầu lạnh tim nóng, làm bài xong nhẹ tênh vì biết Nguyện vọng 1 trong tầm với.",
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nhaaa. Cố thêm xíu nữa là chạm đích rồi, Nguyện vọng 1 đứng đó đợi cậu chạy cái vèo tới ôm liền.",
+            "Chúc cậu năm mới 2026 tràn đầy bình an và hạnh phúc mỗi ngày. Đi thi feel như làm bài quen ở nhà, tay viết lia lia và combo đậu Nguyện vọng 1 nằm chắc trong túi.",
+            "Chúc cậu năm mới 2026 thật an yên, vui vẻ và hạnh phúc trọn vẹn. Tâm lý vững vàng như trùm cuối, sóng gió cỡ nào cũng không xi nhê và Nguyện vọng 1 chỉ là chuyện sớm muộn.",
+            "Chúc cậu năm mới 2026 thật ấm áp, hạnh phúc và bình an từ đầu tới cuối năm. Thi xong ngủ một giấc ngon lành vì trong lòng biết rõ mình đủ điểm đậu Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 vui tươi, hạnh phúc và bình an dài lâu. Coi áp lực chỉ là tí gia vị và món chính năm nay chắc chắn là đậu Nguyện vọng 1 cho đã cái nư.",
+            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an nha. Đừng overthink chi cho mệt, làm hết sức mình là auto ổn áp và Nguyện vọng 1 sẽ về tay.",
+            "Chúc cậu năm mới 2026 rạng rỡ, hạnh phúc và bình an mỗi ngày. Đi thi tim đập vì tự tin chứ không phải vì run, kết quả về là đậu Nguyện vọng 1 thuyết phục khỏi bàn.",
+            "Chúc cậu năm mới 2026 luôn tươi cười, hạnh phúc và bình an trong mọi khoảnh khắc. Sinh ra là để làm học bá nên Nguyện vọng 1 chỉ là cái tên thoii.",
+            "Chúc cậu năm mới 2026 đầy ắp tiếng cười, hạnh phúc và bình an ngập tràn. Bước vào phòng thi với niềm tin đầy túi và bước ra cầm chắc suất Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 thật xịn sò, hạnh phúc và bình an suốt chặng đường. Năm nay là năm bứt phá đỉnh của chóp và cái kết đẹp nhất vẫn là đậu Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nèee. Đề thi nhìn cái là quen như bestie lâu ngày không gặp và làm xong là đủ điểm đậu Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 tràn đầy hạnh phúc và bình an trong tim. Không cần trông chờ may mắn quá nhiều vì thực lực cậu đỉnh lắm rồi, tự tin cái là chạm Nguyện vọng 1 cái vèo.",
+            "Chúc cậu năm mới 2026 vui vẻ, bình an và hạnh phúc theo đúng kịch bản xịn sò nhất. Ôn bài mượt mà, làm bài không trật nhịp và kết phim có hậu là đậu Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an trong từng ngày. Đề có khoai chút cũng không sao, cậu đủ tỉnh táo để xử đẹp và tiến thẳng vô ngôi trường mơ ước.",
+            "Chúc cậu năm mới 2026 thật rực rỡ, hạnh phúc và bình an nhaaa. Coi đi thi như chuyến phiêu lưu ngắn mà siêu ý nghĩa và đậu Nguyện vọng 1 là cột mốc mở ra cả bầu trời phía trước.",
+            "Chúc cậu năm mới 2026 vui vẻ, hạnh phúc và bình an trọn vẹn. Những nỗ lực âm thầm rồi cũng được đền đáp bằng một suất vô ngôi trường mơ ước nghe mà đã cái nư.",
+            "Chúc cậu năm mới 2026 thật ấm áp, hạnh phúc và bình an suốt năm dài. Chốt lại hành trình bằng cú finish đỉnh cao và Nguyện vọng 1 chính thức về tay cậu."
         ];
+
 
 
 
@@ -1326,15 +1321,15 @@
                     spawnChance: 0.03
                 }
             },
-            
+
             // Heuristic detection algorithm
-            detect: function() {
+            detect: function () {
                 const cores = navigator.hardwareConcurrency || 4; // Số nhân CPU
                 const ram = navigator.deviceMemory || 8; // RAM (GB) - Chrome only
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                
+
                 // Thuật toán chấm điểm đơn giản
-                let score = cores * 1.5 + ram; 
+                let score = cores * 1.5 + ram;
                 if (isMobile) score *= 0.6; // Giảm điểm nếu là mobile do giới hạn tản nhiệt
 
                 console.log(`Hardware Scan: Cores=${cores}, RAM=~${ram}GB, Mobile=${isMobile}, Score=${score.toFixed(1)}`);
@@ -1344,12 +1339,12 @@
                 else this.setTier('medium'); // Không set High nữa
             },
 
-            setTier: function(t) {
+            setTier: function (t) {
                 console.log(`Switched Fireworks to [${t.toUpperCase()}] tier.`);
                 this.tier = t;
             },
 
-            getCurrent: function() {
+            getCurrent: function () {
                 return this.settings[this.tier];
             }
         };
@@ -1362,17 +1357,17 @@
             lastTime: 0,
             frames: 0,
             history: [],
-            check: function(time) {
+            check: function (time) {
                 if (!this.lastTime) { this.lastTime = time; return; }
                 const delta = time - this.lastTime;
-                
+
                 if (delta > 0) {
                     const fps = 1000 / delta;
                     this.history.push(fps);
                     if (this.history.length > 50) this.history.shift(); // Giữ 50 frame gần nhất
 
                     // Tính trung bình
-                    const avg = this.history.reduce((a,b)=>a+b,0) / this.history.length;
+                    const avg = this.history.reduce((a, b) => a + b, 0) / this.history.length;
 
                     // Nếu FPS trung bình < 30 trong 50 frame liên tiếp và chưa ở Low tier
                     if (this.history.length > 40 && avg < 30 && SystemConfig.tier !== 'low') {
@@ -1466,10 +1461,10 @@
             draw() {
                 if (this.alpha <= 0.05) return;
                 const conf = SystemConfig.getCurrent();
-                
+
                 ctx.strokeStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
                 ctx.lineWidth = 1.5;
-                
+
                 // Chỉ vẽ bóng nếu config cho phép
                 if (conf.shadows) {
                     ctx.shadowBlur = 4;
@@ -1480,7 +1475,7 @@
                 ctx.moveTo(this.x, this.y);
                 ctx.lineTo(this.x - this.vx * 3, this.y - this.vy * 3);
                 ctx.stroke();
-                
+
                 ctx.shadowBlur = 0; // Reset
             }
         }
@@ -1491,7 +1486,7 @@
             const type = types[Math.floor(Math.random() * types.length)];
             const keys = Object.keys(palettes);
             const palette = palettes[keys[Math.floor(Math.random() * keys.length)]];
-            
+
             // Số lượng hạt dựa trên config tier
             const count = Math.floor(Math.random() * (conf.particleCount.max - conf.particleCount.min)) + conf.particleCount.min;
 
