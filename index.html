@@ -29,10 +29,8 @@
             background-color: var(--bg-night);
             color: #fff;
             overflow: hidden;
-            /* Ngăn cuộn trang chính */
             height: 100vh;
             width: 100vw;
-            /* Chống rung khi scroll trên mobile */
             overscroll-behavior: none;
         }
 
@@ -92,7 +90,6 @@
             opacity: 0;
             z-index: 10;
             padding: 20px;
-            /* Thêm padding để nội dung không sát lề mobile */
         }
 
         .page.active {
@@ -144,7 +141,6 @@
         .btn-general {
             margin-top: 20px;
             padding: 12px 30px;
-            /* Tăng vùng bấm cho cảm ứng */
             background: transparent;
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -152,10 +148,8 @@
             cursor: pointer;
             font-family: 'Dancing Script', cursive;
             font-size: clamp(1.2rem, 4vw, 1.5rem);
-            /* Tự động chỉnh size chữ nút */
             transition: 0.3s;
             touch-action: manipulation;
-            /* Tối ưu cho touch */
         }
 
         .btn-general:hover {
@@ -187,7 +181,7 @@
             text-align: center;
         }
 
-        /* --- PAGE 2: THIỆP (BỨC THƯ - RESPONSIVE) --- */
+        /* --- PAGE 2: THIỆP --- */
         .letter-container {
             background: var(--paper-bg);
             color: #2c3e50;
@@ -195,8 +189,6 @@
             border-radius: 2px;
             width: 100%;
             max-width: 550px;
-            /* Giới hạn chiều rộng trên Desktop */
-            /* Xử lý chiều cao trên Mobile xoay ngang */
             max-height: 85vh;
             overflow-y: auto;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 50px rgba(0, 0, 0, 0.05);
@@ -253,30 +245,18 @@
             }
         }
 
-        /* --- PAGE 3: CHOICE --- */
+        /* --- PAGE 3: CHOICE (ĐÃ ẨN) --- */
+        /* Giữ lại style nhưng không dùng tới */
         .card {
             width: 90%;
             max-width: 600px;
             padding: 30px 20px !important;
-            /* Ghi đè inline style */
-        }
-
-        .card h1 {
-            font-size: clamp(2rem, 8vw, 3rem) !important;
-        }
-
-        .choice-btn-group {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         /* --- PAGE 3: INTERACTIVE (SCROLLABLE) --- */
         #page-3-interactive {
             display: none;
             overflow-y: auto;
-            /* Cho phép cuộn dọc */
             overflow-x: hidden;
             background-color: var(--bg-night);
             position: absolute;
@@ -286,7 +266,6 @@
             height: 100%;
             z-index: 20;
             -webkit-overflow-scrolling: touch;
-            /* Mượt hơn trên iOS */
         }
 
         .interactive-container {
@@ -300,7 +279,6 @@
 
         .interactive-section {
             min-height: 90vh;
-            /* Mỗi phần chiếm gần trọn màn hình */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -319,7 +297,6 @@
         .interactive-title {
             font-family: 'Dancing Script', cursive;
             font-size: clamp(2rem, 6vw, 3rem);
-            /* Responsive text */
             margin-bottom: 20px;
             color: var(--text-gold);
             text-shadow: 0 0 10px var(--fire-glow);
@@ -334,13 +311,11 @@
             background: #3e2723;
             border-radius: 10px 10px 40px 40px;
             margin: 40px auto;
-            /* Margin gọn hơn */
             box-shadow: 0 0 50px var(--fire-glow);
             animation: flicker 3s infinite alternate;
             transform-origin: center;
         }
 
-        /* Mobile Scale cho nồi */
         @media (max-width: 400px) {
             .pot-container {
                 transform: scale(0.8);
@@ -451,7 +426,6 @@
             text-align: center;
             pointer-events: none;
             display: none;
-            /* Xử lý text dài trên mobile */
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -462,9 +436,8 @@
             display: block !important;
         }
 
-        /* --- Element: Cửa sổ (Responsive) --- */
+        /* --- Element: Cửa sổ --- */
         .window-frame {
-            /* Thay đổi width/height cố định thành tương đối */
             width: 80vw;
             max-width: 300px;
             height: 50vh;
@@ -661,13 +634,11 @@
             transition: opacity 3s ease;
             z-index: 200;
             padding: 0 10px;
-            /* Tránh sát lề mobile */
         }
 
         #happy-new-year h1 {
             font-family: 'Dancing Script', cursive;
             font-size: clamp(2.5rem, 8vw, 5rem);
-            /* Tự động chỉnh size chữ */
             color: #fff;
             text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 60px #ffbd69;
             line-height: 1.2;
@@ -689,14 +660,12 @@
             height: 100%;
         }
 
-        /* --- MEDIA QUERIES BỔ SUNG CHO MOBILE NHỎ --- */
         @media (max-width: 600px) {
             .letter-container {
                 padding: 30px 20px;
                 width: 95%;
             }
 
-            /* Đẩy nút xuống chút để không bị dính */
             .btn-general {
                 margin-top: 25px;
             }
@@ -722,30 +691,16 @@
             <div class="letter-footer" id="letter-footer" style="opacity: 0; transition: 1s;">
                 Ký tên: Tui nè (Gửi từ 2026)
             </div>
-            <p id="wait-message" style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic;
- font-family: 'Lora', serif;">
+            <p id="wait-message"
+                style="display:none; text-align: center; font-size: 0.9rem; margin-top: 25px; color: #888; font-style: italic; font-family: 'Lora', serif;">
                 Đợi 1 xíu nhé...
             </p>
         </div>
     </div>
 
-    <div id="page-3-choice" class="page">
-        <div class="card" style="text-align: center;
- background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border-radius: 15px;">
-            <h1 style="font-family: 'Dancing Script', cursive;
- color: var(--text-gold);">Gửi Gắm Tương Lai</h1>
-            <p style="margin: 20px 0;
- font-size: clamp(1rem, 3vw, 1.2rem);">Bạn có mong ước gì gửi gắm cho chính mình
-                trong tương lai không?</p>
-            <div class="choice-btn-group">
-                <button class="btn-general" onclick="startInteractiveMode()">Có chứ</button>
-                <button class="btn-general" onclick="goToPage4()">Không, đến giao thừa thôi</button>
-            </div>
-        </div>
-    </div>
+    <div id="page-3-choice" class="page" style="display:none !important;"></div>
 
     <div id="page-3-interactive">
-
         <div class="interactive-container">
             <section class="interactive-section visible">
                 <h2 class="interactive-title">Bếp lửa năm mới</h2>
@@ -753,8 +708,7 @@
                     <div class="pot-lid"></div>
                     <div id="steam-container"></div>
                 </div>
-                <p style="text-align: center;
- color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong
+                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Bên nồi bánh chưng đang sôi, những mong
                     cầu đang bay lên.</p>
             </section>
 
@@ -764,37 +718,32 @@
                     <div class="flame" id="lamp-flame"></div>
                 </div>
                 <div class="wish-input-wrapper">
-                    <input type="text" class="wish-input" id="wish-input-old" placeholder="Một nỗi 
- buồn muốn buông bỏ..." autocomplete="off">
+                    <input type="text" class="wish-input" id="wish-input-old"
+                        placeholder="Một nỗi buồn muốn buông bỏ..." autocomplete="off">
                     <div id="ash-display" class="ash-text"></div>
                 </div>
-
-                <button class="btn-general" onclick="lightLamp()" style="display: block;
- margin: 20px auto;">Thắp đèn &
+                <button class="btn-general" onclick="lightLamp()" style="display: block; margin: 20px auto;">Thắp đèn &
                     Hóa giải</button>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Khung Cửa Nguyện Cầu</h2>
                 <div class="window-frame" id="window-frame">
-                    <div id="stars-layer-window" style="width:100%;
- height:100%;"></div>
+                    <div id="stars-layer-window" style="width:100%; height:100%;"></div>
                     <canvas id="window-meteor-canvas"></canvas>
                 </div>
-                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..." style="margin-top:20px;
- color: #e6dace;"></textarea>
-                <button class="btn-general" onclick="sendWish()" style="display: block;
- margin: 20px auto;">Gửi niềm hy
+                <textarea id="reflection-input" rows="1" placeholder="Gửi vào đây một hy vọng..."
+                    style="margin-top:20px; color: #e6dace;"></textarea>
+                <button class="btn-general" onclick="sendWish()" style="display: block; margin: 20px auto;">Gửi niềm hy
                     vọng</button>
-                <p id="window-feedback" style="text-align:center;
- font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">
+                <p id="window-feedback"
+                    style="text-align:center; font-size: 0.8rem; margin-top: 10px; opacity: 0; transition: opacity 1s;">
                     Vũ trụ đã lắng nghe.</p>
             </section>
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Lộc Đầu Năm</h2>
-                <p style="text-align: center;
- color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn
+                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Không phải tiền bạc. Đây là chút vốn
                     liếng tinh thần cho bạn.</p>
                 <div class="envelope" onclick="openEnvelope()"></div>
                 <div id="lucky-note" class="lucky-note"></div>
@@ -802,8 +751,7 @@
 
             <section class="interactive-section">
                 <h2 class="interactive-title">Cùng nhau ngắm pháo hoa nhé</h2>
-                <p style="text-align: center;
- color: #e6dace; padding: 0 10px;">Thời khắc rực rỡ nhất đã đến rồi.</p>
+                <p style="text-align: center; color: #e6dace; padding: 0 10px;">Thời khắc rực rỡ nhất đã đến rồi.</p>
                 <button class="btn-general" onclick="goToPage4()">Bắt đầu thôi nào</button>
             </section>
         </div>
@@ -818,7 +766,7 @@
     </div>
 
     <script>
-        // --- GLOBAL BACKGROUND MUSIC ---
+        // --- GLOBAL MUSIC ---
         const bgMusic = document.getElementById('bg-music');
         let musicStarted = false;
 
@@ -826,18 +774,11 @@
             if (musicStarted) return;
             bgMusic.volume = 0.6;
             bgMusic.play().catch(() => { });
-
-            // --- CẬP NHẬT: NGĂN NGỪA SLEEP (WAKE LOCK API) ---
             try {
                 if ('wakeLock' in navigator) {
                     await navigator.wakeLock.request('screen');
-                    console.log('Screen Wake Lock active');
                 }
-            } catch (err) {
-                console.error('Wake Lock error:', err);
-            }
-            // ------------------------------------------------
-
+            } catch (err) { }
             musicStarted = true;
             document.removeEventListener('click', startMusicOnce);
             document.removeEventListener('touchstart', startMusicOnce);
@@ -850,14 +791,12 @@
         function createStars() {
             const bg = document.getElementById('star-bg');
             for (let i = 0; i < 100; i++) {
-
                 const s = document.createElement('div');
                 s.className = 'star';
                 const size = Math.random() * 2 + 1;
                 s.style.width = size + 'px';
                 s.style.height = size + 'px';
                 s.style.left = Math.random() * 100 + '%';
-
                 s.style.top = Math.random() * 100 + '%';
                 s.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
                 s.style.setProperty('--opacity', Math.random());
@@ -865,6 +804,7 @@
             }
         }
         createStars();
+
         // --- ENGINE SAO BĂNG ---
         class MeteorEngine {
             constructor(canvasId, isWindow = false) {
@@ -878,7 +818,6 @@
                 if (!isWindow) {
                     window.addEventListener('resize', () => this.resize());
                 } else {
-                    // Update: Listen to window resize for window frame too
                     window.addEventListener('resize', () => this.resizeWindowFrame());
                     this.resizeWindowFrame();
                 }
@@ -893,7 +832,6 @@
             }
 
             resizeWindowFrame() {
-                // Ensure canvas matches the responsive div size
                 const rect = this.canvas.parentElement.getBoundingClientRect();
                 this.width = rect.width;
                 this.height = rect.height;
@@ -902,8 +840,7 @@
             }
 
             shoot(forced = false) {
-                let chance = this.isWindow ?
-                    0.01 : 0.02;
+                let chance = this.isWindow ? 0.01 : 0.02;
                 if (!forced && Math.random() > chance) return;
                 this.meteors.push(new Meteor(this.width, this.height, this.isWindow));
             }
@@ -911,11 +848,9 @@
             animate() {
                 this.ctx.clearRect(0, 0, this.width, this.height);
                 this.shoot();
-
                 for (let i = 0; i < this.meteors.length; i++) {
                     this.meteors[i].update();
                     this.meteors[i].draw(this.ctx);
-
                     if (this.meteors[i].isDead()) {
                         this.meteors.splice(i, 1);
                         i--;
@@ -941,27 +876,22 @@
                     this.speed = Math.random() * 10 + 20;
                     this.size = Math.random() * 2 + 0.5;
                 }
-
                 this.angle = Math.PI / 4 + (Math.random() * 0.2 - 0.1);
                 this.vx = Math.cos(this.angle) * this.speed;
                 this.vy = Math.sin(this.angle) * this.speed;
                 this.opacity = 1;
             }
-
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
                 this.opacity -= 0.015;
             }
-
             draw(ctx) {
                 const tailX = this.x - Math.cos(this.angle) * this.len;
                 const tailY = this.y - Math.sin(this.angle) * this.len;
-
                 const gradient = ctx.createLinearGradient(this.x, this.y, tailX, tailY);
                 gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity})`);
                 gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
-
                 ctx.beginPath();
                 ctx.moveTo(this.x, this.y);
                 ctx.lineTo(tailX, tailY);
@@ -977,15 +907,12 @@
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
-
-            isDead() {
-                return this.opacity <= 0;
-            }
+            isDead() { return this.opacity <= 0; }
         }
 
         const bgMeteorEngine = new MeteorEngine('meteor-canvas');
-        // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
 
+        // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
         const wishesList = [
             "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nèee. Năm của cậu đó, bước vào năm mới với khí thế bùng nổ như nhân vật chính thanh xuân, vô phòng thi bật mode chiến thần và đợi tin đậu Nguyện vọng 1 thôi.",
             "Chúc cậu năm mới 2026 luôn tràn đầy niềm vui, hạnh phúc và bình an trong từng ngày. Thi cử năm nay nhẹ tênh như mây bay, não chạy mượt như wifi full vạch, khoanh câu nào chắc câu đó và Nguyện vọng 1 chỉ còn là thủ tục.",
@@ -1017,85 +944,55 @@
         ];
 
 
-
-
-
         let userName = "";
 
         function typeWriter(text, elementId, speed = 40) {
             let i = 0;
             const element = document.getElementById(elementId);
             element.innerHTML = "";
-
-
-
             function type() {
                 if (i < text.length) {
                     let char = text.charAt(i);
-                    if (char === '\n') {
-                        element.innerHTML +=
-                            '<br>';
-
-                    } else {
-                        element.innerHTML += char;
-                    }
+                    element.innerHTML += (char === '\n') ? '<br>' : char;
                     i++;
-
-
                     setTimeout(type, speed);
                 } else {
                     document.getElementById('letter-footer').style.opacity = 1;
                     const waitMsg = document.getElementById('wait-message');
                     waitMsg.style.display = 'block';
-
-
                     waitMsg.style.animation = 'twinkle 1s infinite alternate';
-                    // --- UPDATE: Tự động chuyển trang sau 5 giây ---
-                    setTimeout(() => {
 
-                        goToPage3();
+                    // --- CẬP NHẬT: Tự động chuyển thẳng tới Page 3 INTERACTIVE sau 5 giây ---
+                    setTimeout(() => {
+                        goToPage3(); // Đã được sửa để vào thẳng interactive
                     }, 5000);
                 }
             }
             type();
         }
 
-        // --- UPDATED: PAGE TRANSITION LOGIC ---
+        // --- HÀM CHUYỂN TRANG (SỬA ĐỔI) ---
         function switchPage(hideId, showId) {
             const h = document.getElementById(hideId);
             const s = document.getElementById(showId);
-
             h.classList.add('page-exit');
             h.classList.remove('active');
-
             setTimeout(() => {
                 h.classList.remove('page-exit');
                 h.style.display = 'none';
 
                 if (showId === 'page-3-interactive') {
                     s.style.display = 'block';
-
                     s.classList.add('page-enter');
                     setTimeout(() => s.classList.remove('page-enter'), 1000);
-
-                    // Fix: Reset scroll on entry
                     s.scrollTop = 0;
-
-
                     setTimeout(() => {
-
                         const sections = document.querySelectorAll('.interactive-section');
                         const observer = new IntersectionObserver((entries) => {
-
                             entries.forEach(entry => {
-
                                 if (entry.isIntersecting) entry.target.classList.add('visible');
                             });
-                        }, {
-                            threshold: 0.1
-                        }); // Giảm threshold cho mobile dễ trigger
-
-
+                        }, { threshold: 0.1 });
                         sections.forEach(sec => observer.observe(sec));
                     }, 100);
                 } else {
@@ -1122,68 +1019,36 @@
             }, 1200);
         }
 
-        function goToPage3() {
-            switchPage('page-2', 'page-3-choice');
-        }
-
+        // --- SỬA ĐỔI: BỎ QUA PAGE CHOICE, VÀO THẲNG INTERACTIVE ---
         let windowMeteorEngine = null;
 
-        function startInteractiveMode() {
-            const choice = document.getElementById('page-3-choice');
-            const interactive = document.getElementById('page-3-interactive');
+        function goToPage3() {
+            // Thay vì chuyển sang page-3-choice, ta chuyển thẳng sang page-3-interactive
+            // và gọi các hàm khởi tạo cần thiết ngay tại đây.
 
-            choice.classList.add('page-exit');
+            // Logic chuyển trang
+            switchPage('page-2', 'page-3-interactive');
+
+            // Logic khởi tạo (lấy từ startInteractiveMode cũ)
             setTimeout(() => {
-                choice.classList.remove('active', 'page-exit');
-                choice.style.display = 'none';
-
-                interactive.style.display = 'block';
-                interactive.scrollTop = 0; // Đảm bảo cuộn về đầu
-
-
-                interactive.classList.add('page-enter');
-                setTimeout(() => interactive.classList.remove('page-enter'), 1000);
-
                 initSteam();
                 initWindowStars();
-
-                windowMeteorEngine = new MeteorEngine('window-meteor-canvas', true);
-
-
-                const sections = document.querySelectorAll('.interactive-section');
-                const observer = new IntersectionObserver((entries) => {
-
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) entry.target.classList.add('visible');
-                    });
-
-                }, {
-                    threshold: 0.1
-                });
-
-                sections.forEach(sec => observer.observe(sec));
+                if (!windowMeteorEngine) {
+                    windowMeteorEngine = new MeteorEngine('window-meteor-canvas', true);
+                }
             }, 800);
         }
 
         function goToPage4() {
-            const p3Choice = document.getElementById('page-3-choice');
             const p3Inter = document.getElementById('page-3-interactive');
-
-            if (p3Choice.classList.contains('active')) {
-                switchPage('page-3-choice', 'page-4');
-            } else {
-                p3Inter.classList.add('page-exit');
-                setTimeout(() => {
-                    p3Inter.style.display = 'none';
-                    p3Inter.classList.remove('page-exit');
-
-                    const p4 = document.getElementById('page-4');
-
-                    p4.classList.add('active', 'page-enter');
-
-                    setTimeout(() => p4.classList.remove('page-enter'), 1000);
-                }, 800);
-            }
+            p3Inter.classList.add('page-exit');
+            setTimeout(() => {
+                p3Inter.style.display = 'none';
+                p3Inter.classList.remove('page-exit');
+                const p4 = document.getElementById('page-4');
+                p4.classList.add('active', 'page-enter');
+                setTimeout(() => p4.classList.remove('page-enter'), 1000);
+            }, 800);
             setTimeout(startFinale, 1500);
         }
 
@@ -1196,9 +1061,6 @@
                 const el = document.createElement('div');
                 el.className = 'steam';
                 el.innerText = wishes[Math.floor(Math.random() * wishes.length)];
-
-
-
                 el.style.left = (50 + (Math.random() * 20 - 10)) + '%';
                 steamCont.appendChild(el);
                 setTimeout(() => el.remove(), 4000);
@@ -1209,34 +1071,23 @@
             const inp = document.getElementById('wish-input-old');
             const ashDisplay = document.getElementById('ash-display');
             const flm = document.getElementById('lamp-flame');
-
             if (inp && inp.value.trim()) {
                 flm.classList.add('flare-up');
                 ashDisplay.innerText = inp.value;
                 inp.value = "";
                 ashDisplay.classList.add('turn-to-ash');
-
-                setTimeout(() => {
-                    inp.placeholder = "Muộn phiền đã buông bỏ.";
-                }, 800);
-                setTimeout(() => {
-                    flm.classList.remove('flare-up');
-                }, 2000);
-                setTimeout(() => {
-                    ashDisplay.innerText = "";
-                    ashDisplay.classList.remove('turn-to-ash');
-                }, 3500);
+                setTimeout(() => { inp.placeholder = "Muộn phiền đã buông bỏ."; }, 800);
+                setTimeout(() => { flm.classList.remove('flare-up'); }, 2000);
+                setTimeout(() => { ashDisplay.innerText = ""; ashDisplay.classList.remove('turn-to-ash'); }, 3500);
             }
         }
 
         function initWindowStars() {
             const layer = document.getElementById('stars-layer-window');
             if (layer.children.length > 0) return;
-
             for (let i = 0; i < 30; i++) {
                 const s = document.createElement('div');
                 const size = Math.random() * 2 + 1;
-
                 s.style.position = 'absolute';
                 s.style.width = size + 'px';
                 s.style.height = size + 'px';
@@ -1246,7 +1097,6 @@
                 s.style.left = Math.random() * 100 + '%';
                 s.style.top = Math.random() * 100 + '%';
                 s.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite ease-in-out`;
-
                 layer.appendChild(s);
             }
         }
@@ -1254,7 +1104,6 @@
         function sendWish() {
             const fb = document.getElementById('window-feedback');
             const inp = document.getElementById('reflection-input');
-
             if (inp && inp.value.trim()) {
                 inp.value = "";
                 inp.placeholder = "Đã gửi vào vũ trụ...";
@@ -1268,14 +1117,7 @@
         }
 
         function openEnvelope() {
-            const quotes = [
-                "Sống rực rỡ nhé!",
-                "Tâm an, vạn sự an.",
-                "Mạnh mẽ và hạnh phúc.",
-                "Tiền đầy túi, tình đầy tim.",
-                "Năm nay sẽ tốt hơn năm cũ.",
-                "Luôn yêu đời nhé!"
-            ];
+            const quotes = ["Sống rực rỡ nhé!", "Tâm an, vạn sự an.", "Mạnh mẽ và hạnh phúc.", "Tiền đầy túi, tình đầy tim.", "Năm nay sẽ tốt hơn năm cũ.", "Luôn yêu đời nhé!"];
             const note = document.getElementById('lucky-note');
             const env = document.querySelector('.envelope');
             if (note.style.display !== 'block') {
@@ -1286,7 +1128,7 @@
             }
         }
 
-        // --- 4. FIREWORKS ENGINE (ADAPTIVE HARDWARE ACCELERATION) ---
+        // --- 4. FIREWORKS ENGINE (SUPER IMPROVED) ---
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -1294,91 +1136,28 @@
         let rockets = [];
         let fireworksActive = false;
 
-        // --- Hardware Analysis & Configuration ---
         const SystemConfig = {
-            tier: 'medium', // Default là Medium
-            // Cấu hình chi tiết cho từng Tier
+            tier: 'medium',
             settings: {
-                high: {
-                    particleCount: { min: 100, max: 180 },
-                    decayRate: 0.012,
-                    rocketTrailLen: 10,
-                    shadows: true,
-                    spawnChance: 0.06
-                },
-                medium: {
-                    particleCount: { min: 60, max: 100 },
-                    decayRate: 0.02,
-                    rocketTrailLen: 6,
-                    shadows: false, // Tắt bóng để tối ưu
-                    spawnChance: 0.04
-                },
-                low: {
-                    particleCount: { min: 30, max: 60 },
-                    decayRate: 0.035,
-                    rocketTrailLen: 3,
-                    shadows: false,
-                    spawnChance: 0.03
-                }
+                high: { particleCount: { min: 150, max: 250 }, spawnChance: 0.08 },
+                medium: { particleCount: { min: 100, max: 180 }, spawnChance: 0.05 },
+                low: { particleCount: { min: 50, max: 80 }, spawnChance: 0.03 }
             },
-
-            // Heuristic detection algorithm
             detect: function () {
-                const cores = navigator.hardwareConcurrency || 4; // Số nhân CPU
-                const ram = navigator.deviceMemory || 8; // RAM (GB) - Chrome only
+                const cores = navigator.hardwareConcurrency || 4;
+                const ram = navigator.deviceMemory || 8;
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-                // Thuật toán chấm điểm đơn giản
                 let score = cores * 1.5 + ram;
-                if (isMobile) score *= 0.6; // Giảm điểm nếu là mobile do giới hạn tản nhiệt
-
-                console.log(`Hardware Scan: Cores=${cores}, RAM=~${ram}GB, Mobile=${isMobile}, Score=${score.toFixed(1)}`);
-
-                // CẬP NHẬT: Luôn giới hạn ở mức Medium dù máy mạnh (để tránh nóng máy)
+                if (isMobile) score *= 0.6;
+                // Tự động chọn medium cho an toàn, high nếu máy rất mạnh
                 if (score < 6) this.setTier('low');
-                else this.setTier('medium'); // Không set High nữa
+                else if (score > 12 && !isMobile) this.setTier('high');
+                else this.setTier('medium');
             },
-
-            setTier: function (t) {
-                console.log(`Switched Fireworks to [${t.toUpperCase()}] tier.`);
-                this.tier = t;
-            },
-
-            getCurrent: function () {
-                return this.settings[this.tier];
-            }
+            setTier: function (t) { this.tier = t; },
+            getCurrent: function () { return this.settings[this.tier]; }
         };
-
-        // Kích hoạt quét phần cứng
         SystemConfig.detect();
-
-        // --- FPS Monitoring for Dynamic Downgrade ---
-        const FPSMonitor = {
-            lastTime: 0,
-            frames: 0,
-            history: [],
-            check: function (time) {
-                if (!this.lastTime) { this.lastTime = time; return; }
-                const delta = time - this.lastTime;
-
-                if (delta > 0) {
-                    const fps = 1000 / delta;
-                    this.history.push(fps);
-                    if (this.history.length > 50) this.history.shift(); // Giữ 50 frame gần nhất
-
-                    // Tính trung bình
-                    const avg = this.history.reduce((a, b) => a + b, 0) / this.history.length;
-
-                    // Nếu FPS trung bình < 30 trong 50 frame liên tiếp và chưa ở Low tier
-                    if (this.history.length > 40 && avg < 30 && SystemConfig.tier !== 'low') {
-                        if (SystemConfig.tier === 'high') SystemConfig.setTier('medium');
-                        else SystemConfig.setTier('low');
-                        this.history = []; // Reset để tránh chuyển liên tục
-                    }
-                }
-                this.lastTime = time;
-            }
-        };
 
         function resize() {
             width = window.innerWidth;
@@ -1393,23 +1172,24 @@
             pureWhite: { base: [255, 255, 255], secondary: [200, 200, 255] },
             gold: { base: [255, 215, 0], secondary: [255, 250, 200] },
             fire: { base: [255, 69, 0], secondary: [255, 165, 0] },
-            cool: { base: [0, 191, 255], secondary: [255, 255, 255] }
+            cool: { base: [0, 191, 255], secondary: [255, 255, 255] },
+            spring: { base: [255, 105, 180], secondary: [144, 238, 144] } // Thêm màu xuân
         };
 
+        // --- COMPLEX ALGORITHMS CLASS ---
         class Rocket {
             constructor() {
-                const conf = SystemConfig.getCurrent();
                 this.x = Math.random() * width;
                 this.y = height;
-                this.destY = Math.random() * (height * 0.3) + height * 0.05;
-                this.speed = Math.random() * 5 + 15;
-                this.vx = (Math.random() - 0.5) * 4;
+                this.destY = Math.random() * (height * 0.4) + height * 0.05;
+                this.speed = Math.random() * 5 + 12; // Chậm lại chút để dễ nhìn
+                this.vx = (Math.random() - 0.5) * 3;
                 this.vy = -this.speed;
                 this.color = '255, 255, 255';
                 this.trail = [];
-                this.trailMax = conf.rocketTrailLen; // Dùng config
+                this.trailMax = 8;
                 this.dead = false;
-                this.gravity = 0.25;
+                this.gravity = 0.2;
             }
             update() {
                 this.vy += this.gravity;
@@ -1417,8 +1197,9 @@
                 this.y += this.vy;
                 this.trail.push({ x: this.x, y: this.y, alpha: 1 });
                 if (this.trail.length > this.trailMax) this.trail.shift();
-                this.trail.forEach(t => t.alpha -= 0.15);
-                if (this.vy >= -2 || this.y <= this.destY) {
+                this.trail.forEach(t => t.alpha -= 0.1);
+
+                if (this.vy >= -1 || this.y <= this.destY) {
                     this.dead = true;
                     createExplosion(this.x, this.y);
                 }
@@ -1430,24 +1211,24 @@
                     ctx.fillStyle = `rgba(${this.color}, ${t.alpha})`;
                     ctx.fillRect(t.x, t.y, 2, 2);
                 }
-                ctx.fillStyle = `rgb(${this.color})`;
-                ctx.fillRect(this.x, this.y, 3, 3);
             }
         }
 
         class Particle {
-            constructor(x, y, v, colorArr, type) {
-                const conf = SystemConfig.getCurrent();
+            constructor(x, y, v, colorArr) {
                 this.x = x;
                 this.y = y;
                 this.vx = v.x;
                 this.vy = v.y;
                 this.rgb = colorArr;
-                this.alpha = 1;
-                this.friction = 0.95;
-                this.gravity = 0.12;
-                this.decay = conf.decayRate; // Dùng config
-                this.type = type;
+
+                // --- LIFECYCLE ALGORITHM ---
+                this.birthTime = Date.now();
+                this.lifespan = 2000; // CHÍNH XÁC 2 GIÂY
+
+                // Physics
+                this.friction = 0.96; // Air resistance
+                this.gravity = 0.08;
             }
             update() {
                 this.vx *= this.friction;
@@ -1455,81 +1236,75 @@
                 this.vy += this.gravity;
                 this.x += this.vx;
                 this.y += this.vy;
-                this.alpha -= this.decay;
-                if (this.type === 'strobe' && Math.random() > 0.8) this.alpha = 1;
             }
             draw() {
-                if (this.alpha <= 0.05) return;
-                const conf = SystemConfig.getCurrent();
+                const age = Date.now() - this.birthTime;
 
-                ctx.strokeStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
-                ctx.lineWidth = 1.5;
+                // Nếu quá 2 giây thì không vẽ nữa (sẽ bị xóa ở loop)
+                if (age >= this.lifespan) return;
 
-                // Chỉ vẽ bóng nếu config cho phép
-                if (conf.shadows) {
-                    ctx.shadowBlur = 4;
-                    ctx.shadowColor = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${this.alpha})`;
+                // Tính toán Alpha dựa trên thời gian (Non-linear fade)
+                // Giữ sáng trong 70% thời gian đầu, sau đó mờ nhanh
+                let alpha = 1;
+                const progress = age / this.lifespan;
+
+                if (progress > 0.7) {
+                    // Map range 0.7 -> 1.0 to alpha 1.0 -> 0.0
+                    alpha = 1 - ((progress - 0.7) / 0.3);
                 }
 
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(this.x - this.vx * 3, this.y - this.vy * 3);
-                ctx.stroke();
+                // Flicker effect (nhấp nháy ngẫu nhiên)
+                if (Math.random() > 0.9) alpha *= 0.5;
 
-                ctx.shadowBlur = 0; // Reset
+                ctx.fillStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${alpha})`;
+                ctx.fillRect(this.x, this.y, 2, 2);
+            }
+            isDead() {
+                return (Date.now() - this.birthTime) >= this.lifespan;
             }
         }
 
         function createExplosion(x, y) {
             const conf = SystemConfig.getCurrent();
-            const types = ['sphere', 'starburst', 'ring'];
-            const type = types[Math.floor(Math.random() * types.length)];
             const keys = Object.keys(palettes);
             const palette = palettes[keys[Math.floor(Math.random() * keys.length)]];
 
-            // Số lượng hạt dựa trên config tier
+            // Tăng mật độ hạt
             const count = Math.floor(Math.random() * (conf.particleCount.max - conf.particleCount.min)) + conf.particleCount.min;
 
             for (let i = 0; i < count; i++) {
-                let speed = Math.random() * 8 + 2;
-                let angle = Math.random() * Math.PI * 2;
-                let vx, vy;
-                if (type === 'ring') {
-                    speed = 6 + Math.random();
-                    angle = (Math.PI * 2 / count) * i;
-                }
-                vx = Math.cos(angle) * speed;
-                vy = Math.sin(angle) * speed;
-                if (type === 'starburst') {
-                    vx *= Math.random() * 0.5 + 0.5;
-                    vy *= Math.random() * 0.5 + 0.5;
-                }
+                // Sphere physics
+                const angle = Math.random() * Math.PI * 2;
+                // Random radius speed
+                const speed = Math.random() * 6 + 1;
+
+                const vx = Math.cos(angle) * speed;
+                const vy = Math.sin(angle) * speed;
+
                 const color = (Math.random() > 0.3) ? palette.base : palette.secondary;
-                const pType = (Math.random() > 0.8) ? 'strobe' : 'normal';
-                particles.push(new Particle(x, y, { x: vx, y: vy }, color, pType));
+                particles.push(new Particle(x, y, { x: vx, y: vy }, color));
             }
 
-            // Flash effect (chỉ vẽ nếu máy không quá yếu)
-            if (conf.shadows) {
-                ctx.globalCompositeOperation = 'lighter';
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                ctx.beginPath();
-                ctx.arc(x, y, 40, 0, Math.PI * 2);
-                ctx.fill();
-            }
+            // Flash effect
+            ctx.globalCompositeOperation = 'lighter';
+            ctx.fillStyle = `rgba(${palette.base[0]}, ${palette.base[1]}, ${palette.base[2]}, 0.4)`;
+            ctx.beginPath();
+            ctx.arc(x, y, 60, 0, Math.PI * 2);
+            ctx.fill();
         }
 
-        function loop(timestamp) {
-            // Kiểm tra FPS để điều chỉnh
-            FPSMonitor.check(timestamp);
-            const conf = SystemConfig.getCurrent();
-
+        function loop() {
+            // Hiệu ứng mờ đuôi (Trails)
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.2)';
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; // 0.15 để đuôi dài vừa phải
             ctx.fillRect(0, 0, width, height);
             ctx.globalCompositeOperation = 'lighter';
 
-            if (fireworksActive && Math.random() < conf.spawnChance) rockets.push(new Rocket());
+            const conf = SystemConfig.getCurrent();
+
+            if (fireworksActive && Math.random() < conf.spawnChance) {
+                rockets.push(new Rocket());
+            }
 
             for (let i = rockets.length - 1; i >= 0; i--) {
                 rockets[i].update();
@@ -1540,7 +1315,7 @@
             for (let i = particles.length - 1; i >= 0; i--) {
                 particles[i].update();
                 particles[i].draw();
-                if (particles[i].alpha <= 0.05) {
+                if (particles[i].isDead()) {
                     particles.splice(i, 1);
                 }
             }
@@ -1550,11 +1325,11 @@
 
         function startFinale() {
             fireworksActive = true;
-            for (let k = 0; k < 10; k++) setTimeout(() => rockets.push(new Rocket()), k * 100);
-
             const hny = document.getElementById('happy-new-year');
             hny.style.opacity = 1;
             hny.style.transform = "scale(1.1)";
+            // Bắn loạt đầu tiên
+            for (let k = 0; k < 5; k++) setTimeout(() => rockets.push(new Rocket()), k * 200);
         }
     </script>
 </body>
