@@ -9,7 +9,6 @@
         href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Dancing+Script:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
-        /* --- GLOBAL RESET & FONTS --- */
         :root {
             --bg-night: #0a0a0a;
             --text-gold: #ffbd69;
@@ -34,7 +33,7 @@
             overscroll-behavior: none;
         }
 
-        /* --- BACKGROUND SAO & SAO BĂNG --- */
+
         #star-bg {
             position: fixed;
             top: 0;
@@ -76,7 +75,7 @@
             }
         }
 
-        /* --- LOGIC CHUYỂN TRANG --- */
+
         .page {
             position: absolute;
             top: 0;
@@ -137,7 +136,7 @@
             }
         }
 
-        /* --- STYLE CHO NÚT BẤM (RESPONSIVE) --- */
+
         .btn-general {
             margin-top: 20px;
             padding: 12px 30px;
@@ -158,7 +157,6 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
-        /* --- PAGE 1: NHẬP TÊN --- */
         #page-1 input {
             background: transparent;
             border: none;
@@ -181,7 +179,6 @@
             text-align: center;
         }
 
-        /* --- PAGE 2: THIỆP --- */
         .letter-container {
             background: var(--paper-bg);
             color: #2c3e50;
@@ -245,15 +242,12 @@
             }
         }
 
-        /* --- PAGE 3: CHOICE (ĐÃ ẨN) --- */
-        /* Giữ lại style nhưng không dùng tới */
         .card {
             width: 90%;
             max-width: 600px;
             padding: 30px 20px !important;
         }
 
-        /* --- PAGE 3: INTERACTIVE (SCROLLABLE) --- */
         #page-3-interactive {
             display: none;
             overflow-y: auto;
@@ -303,7 +297,6 @@
             text-align: center;
         }
 
-        /* --- Element: Nồi Bánh Chưng --- */
         .pot-container {
             position: relative;
             width: 120px;
@@ -349,7 +342,6 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
-        /* --- Element: Đèn Dầu --- */
         .lamp {
             width: 40px;
             height: 60px;
@@ -436,7 +428,6 @@
             display: block !important;
         }
 
-        /* --- Element: Cửa sổ --- */
         .window-frame {
             width: 80vw;
             max-width: 300px;
@@ -460,7 +451,6 @@
             z-index: 5;
         }
 
-        /* --- Element: Lì xì --- */
         .envelope {
             width: 120px;
             height: 180px;
@@ -496,7 +486,7 @@
             text-align: center;
         }
 
-        /* --- KEYFRAMES --- */
+
         @keyframes steamUpNatural {
             0% {
                 top: -20px;
@@ -622,7 +612,6 @@
             }
         }
 
-        /* --- PAGE 4: FINALE --- */
         #happy-new-year {
             position: absolute;
             top: 40%;
@@ -724,6 +713,10 @@
                 </div>
                 <button class="btn-general" onclick="lightLamp()" style="display: block; margin: 20px auto;">Thắp đèn &
                     Hóa giải</button>
+                <p
+                    style="text-align: center; color: #b1afae; font-size: 0.9rem; margin-bottom: 10px; font-style: italic;">
+                    * Những dòng này sẽ không được lưu lại nên cậu yên tâm nhé
+                </p>
             </section>
 
             <section class="interactive-section">
@@ -766,7 +759,7 @@
     </div>
 
     <script>
-        // --- GLOBAL MUSIC ---
+
         const bgMusic = document.getElementById('bg-music');
         let musicStarted = false;
 
@@ -787,7 +780,7 @@
         document.addEventListener('click', startMusicOnce);
         document.addEventListener('touchstart', startMusicOnce);
 
-        // --- 1. SETUP CHUNG ---
+
         function createStars() {
             const bg = document.getElementById('star-bg');
             for (let i = 0; i < 100; i++) {
@@ -805,7 +798,7 @@
         }
         createStars();
 
-        // --- ENGINE SAO BĂNG ---
+
         class MeteorEngine {
             constructor(canvasId, isWindow = false) {
                 this.canvas = document.getElementById(canvasId);
@@ -912,35 +905,30 @@
 
         const bgMeteorEngine = new MeteorEngine('meteor-canvas');
 
-        // --- 2. LOGIC CHUYỂN TRANG & BỨC THƯ ---
+
         const wishesList = [
             "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nèee. Năm của cậu đó, bước vào năm mới với khí thế bùng nổ như nhân vật chính thanh xuân, vô phòng thi bật mode chiến thần và đợi tin đậu Nguyện vọng 1 thôi.",
             "Chúc cậu năm mới 2026 luôn tràn đầy niềm vui, hạnh phúc và bình an trong từng ngày. Thi cử năm nay nhẹ tênh như mây bay, não chạy mượt như wifi full vạch, khoanh câu nào chắc câu đó và Nguyện vọng 1 chỉ còn là thủ tục.",
             "Chúc cậu năm mới 2026 thật rực rỡ, hạnh phúc và bình an hết nấc. Đi thi tâm thế chill nhưng làm bài cực gắt, điểm cao chót vót và Nguyện vọng 1 gọi tên cái rụp nghe mà đã.",
-            "Chúc cậu năm mới 2026 luôn an yên, vui vẻ và ngập tràn tiếng cười. Giữ bình tĩnh giữa phòng thi đông người, thêm chút tự tin là vé Nguyện vọng 1 nằm gọn trong tay liền.",
-            "Chúc cậu năm mới 2026 hạnh phúc đủ đầy và bình an trong mọi khoảnh khắc. Thi xong tự tin tám phần, xem điểm đủ mười phần vì đã đậu Nguyện vọng 1 thật sự.",
-            "Chúc cậu năm mới 2026 thật vui, thật ấm áp và bình an dài dài. Học vào như nước đổ ly đầy ắp, vào phòng thi bung hết skill và rinh luôn suất Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 tràn đầy năng lượng tích cực, hạnh phúc và bình an mỗi sáng thức dậy. Bản lĩnh hơn mọi áp lực và hiên ngang bước tới Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 luôn mỉm cười, hạnh phúc và an nhiên giữa bộn bề. Làm bài trơn tru từ câu đầu tới câu cuối và đậu Nguyện vọng 1 trong sự hân hoan.",
-            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an trong tim. Gặp đúng tủ thì vui hết nấc, gặp ngoài tủ vẫn xử đẹp và tiến thẳng tới Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 rộn ràng tiếng cười, hạnh phúc đủ đầy và bình an vững chắc. Giữ đầu lạnh tim nóng, làm bài xong nhẹ tênh vì biết Nguyện vọng 1 trong tầm với.",
-            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nhaaa. Cố thêm xíu nữa là chạm đích rồi, Nguyện vọng 1 đứng đó đợi cậu chạy cái vèo tới ôm liền.",
-            "Chúc cậu năm mới 2026 tràn đầy bình an và hạnh phúc mỗi ngày. Đi thi feel như làm bài quen ở nhà, tay viết lia lia và combo đậu Nguyện vọng 1 nằm chắc trong túi.",
-            "Chúc cậu năm mới 2026 thật an yên, vui vẻ và hạnh phúc trọn vẹn. Tâm lý vững vàng như trùm cuối, sóng gió cỡ nào cũng không xi nhê và Nguyện vọng 1 chỉ là chuyện sớm muộn.",
-            "Chúc cậu năm mới 2026 thật ấm áp, hạnh phúc và bình an từ đầu tới cuối năm. Thi xong ngủ một giấc ngon lành vì trong lòng biết rõ mình đủ điểm đậu Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 vui tươi, hạnh phúc và bình an dài lâu. Coi áp lực chỉ là tí gia vị và món chính năm nay chắc chắn là đậu Nguyện vọng 1 cho đã cái nư.",
-            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an nha. Đừng overthink chi cho mệt, làm hết sức mình là auto ổn áp và Nguyện vọng 1 sẽ về tay.",
-            "Chúc cậu năm mới 2026 rạng rỡ, hạnh phúc và bình an mỗi ngày. Đi thi tim đập vì tự tin chứ không phải vì run, kết quả về là đậu Nguyện vọng 1 thuyết phục khỏi bàn.",
-            "Chúc cậu năm mới 2026 luôn tươi cười, hạnh phúc và bình an trong mọi khoảnh khắc. Sinh ra là để làm học bá nên Nguyện vọng 1 chỉ là cái tên thoii.",
-            "Chúc cậu năm mới 2026 đầy ắp tiếng cười, hạnh phúc và bình an ngập tràn. Bước vào phòng thi với niềm tin đầy túi và bước ra cầm chắc suất Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 thật xịn sò, hạnh phúc và bình an suốt chặng đường. Năm nay là năm bứt phá đỉnh của chóp và cái kết đẹp nhất vẫn là đậu Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nèee. Đề thi nhìn cái là quen như bestie lâu ngày không gặp và làm xong là đủ điểm đậu Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 tràn đầy hạnh phúc và bình an trong tim. Không cần trông chờ may mắn quá nhiều vì thực lực cậu đỉnh lắm rồi, tự tin cái là chạm Nguyện vọng 1 cái vèo.",
-            "Chúc cậu năm mới 2026 vui vẻ, bình an và hạnh phúc theo đúng kịch bản xịn sò nhất. Ôn bài mượt mà, làm bài không trật nhịp và kết phim có hậu là đậu Nguyện vọng 1.",
-            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an trong từng ngày. Đề có khoai chút cũng không sao, cậu đủ tỉnh táo để xử đẹp và tiến thẳng vô ngôi trường mơ ước.",
-            "Chúc cậu năm mới 2026 thật rực rỡ, hạnh phúc và bình an nhaaa. Coi đi thi như chuyến phiêu lưu ngắn mà siêu ý nghĩa và đậu Nguyện vọng 1 là cột mốc mở ra cả bầu trời phía trước.",
-            "Chúc cậu năm mới 2026 vui vẻ, hạnh phúc và bình an trọn vẹn. Những nỗ lực âm thầm rồi cũng được đền đáp bằng một suất vô ngôi trường mơ ước nghe mà đã cái nư.",
-            "Chúc cậu năm mới 2026 thật ấm áp, hạnh phúc và bình an suốt năm dài. Chốt lại hành trình bằng cú finish đỉnh cao và Nguyện vọng 1 chính thức về tay cậu."
+            "Chúc cậu năm mới 2026 luôn an yên, vui vẻ và ngập tràn tiếng cười.Năm cuối roi,tớ chúc cậu giữ bình tĩnh giữa phòng thi, thêm chút tự tin là vé Nguyện vọng 1 nằm gọn trong tay liền.",
+            "Chúc cậu năm mới 2026 hạnh phúc đủ đầy và bình an trong mọi khoảnh khắc.Năm cuối roi nên tớ chúc cậu thi xong tự tin tám phần, xem điểm đủ mười phần vì đã đậu Nguyện vọng 1 thật sự.",
+            "Chúc cậu năm mới 2026 thật vui, thật ấm áp và bình an dài dài.Năm cuối roi nên tớ chúc cậu học vào như nước đổ ly đầy ắp, vào phòng thi bung hết skill và rinh luôn suất Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 tràn đầy năng lượng tích cực, hạnh phúc và bình an mỗi sáng thức dậy.Năm cuối roi nên tớ chúc cậu bản lĩnh hơn mọi áp lực và hiên ngang bước tới Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 luôn mỉm cười, hạnh phúc và an nhiên giữa bộn bề. Năm cuối roi nên tớ chúc cậu làm bài trơn tru từ câu đầu tới câu cuối và đậu Nguyện vọng 1 trong sự hân hoan.",
+            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an trong tim.Năm cuối roi nên tớ chúc cậu đi thi gặp trúng tủ, gặp ngoài tủ vẫn xử đẹp và tiến thẳng tới Nguyện vọng 1 nhee.",
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an nhaaa.Năm cuối roi nên cậu hãy cố thêm xíu nữa là chạm đích rồi, Nguyện vọng 1 đứng đó đợi cậu chạy cái vèo tới ôm liền.",
+            "Chúc cậu năm mới 2026 tràn đầy bình an và hạnh phúc mỗi ngày.Năm cuối roi nên tớ chúc cậu đi thi feel như làm bài quen ở nhà, tay viết lia lia và combo đậu Nguyện vọng 1 nằm chắc trong túi.",
+            "Chúc cậu năm mới 2026 thật an yên, vui vẻ và hạnh phúc trọn vẹn. Năm cuối roi nên tớ chúc cậu tâm lý vững vàng như trùm cuối, sóng gió cỡ nào cũng không xi nhê và Nguyện vọng 1 chỉ là chuyện sớm muộn.",
+            "Chúc cậu năm mới 2026 thật nhiều niềm vui, hạnh phúc và bình an nha. Năm cuối của chúng minh roi, cậu đừng overthink chi cho mệt, làm hết sức mình là auto ổn áp và Nguyện vọng 1 sẽ về tay.",
+            "Chúc cậu năm mới 2026 rạng rỡ, hạnh phúc và bình an mỗi ngày.Năm cuối roi nên tớ chúc cậu đi thi tim đập vì tự tin chứ không phải vì run, kết quả về là đậu Nguyện vọng 1 thuyết phục khỏi bàn.",
+            "Chúc cậu năm mới 2026 luôn tươi cười, hạnh phúc và bình an trong mọi khoảnh khắc. Năm nay là năm cuối roii nên là tớ chúc cậu sẽ đạt được những nguyện vọng mà cậu mong muốn ne",
+            "Chúc cậu năm mới 2026 đầy ắp tiếng cười, hạnh phúc và bình an ngập tràn.Năm cuối roi nên tớ chúc cậu,bước vào phòng thi với niềm tin đầy túi và bước ra cầm chắc suất Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 tràn đầy hạnh phúc và bình an trong tim.Tớ nghĩ là cậu không cần trông chờ may mắn quá nhiều vì thực lực cậu đỉnh lắm rồi ấy, tự tin cái là chạm Nguyện vọng 1 cái vèo.",
+            "Chúc cậu năm mới 2026 vui vẻ, bình an và hạnh phúc theo đúng kịch bản xịn sò nhất.Năm cuối roi nên tớ chúc cậu ôn bài mượt mà, làm bài không trật nhịp và kết phim có hậu là đậu Nguyện vọng 1.",
+            "Chúc cậu năm mới 2026 thật vui vẻ, hạnh phúc và bình an trong từng ngày.Cũng là năm cuối roi,dù đề có khoai chút cũng không sao, cậu đủ tỉnh táo để xử đẹp và tiến thẳng vô ngôi trường mơ ước.",
+            "Chúc cậu năm mới 2026 thật rực rỡ, hạnh phúc và bình an nhaaa.Năm cuối roi, cậu hãy coi đi thi như chuyến phiêu lưu ngắn mà siêu ý nghĩa và đậu Nguyện vọng 1 là cột mốc mở ra cả bầu trời phía trước.",
+            "Chúc cậu năm mới 2026 vui vẻ, hạnh phúc và bình an trọn vẹn.Năm cuối roi,tớ tin những nỗ lực âm thầm của cậu rồi cũng được đền đáp bằng một suất vô ngôi trường mơ ước nghe mà đã cái nư.",
+            "Chúc cậu năm mới 2026 thật ấm áp, hạnh phúc và bình an suốt năm dài.Năm cuối roi nên tớ chúc cậu chốt lại hành trình bằng cú finish đỉnh cao và Nguyện vọng 1 chính thức về tay cậu."
         ];
 
 
@@ -962,16 +950,15 @@
                     waitMsg.style.display = 'block';
                     waitMsg.style.animation = 'twinkle 1s infinite alternate';
 
-                    // --- CẬP NHẬT: Tự động chuyển thẳng tới Page 3 INTERACTIVE sau 5 giây ---
+
                     setTimeout(() => {
-                        goToPage3(); // Đã được sửa để vào thẳng interactive
+                        goToPage3();
                     }, 5000);
                 }
             }
             type();
         }
 
-        // --- HÀM CHUYỂN TRANG (SỬA ĐỔI) ---
         function switchPage(hideId, showId) {
             const h = document.getElementById(hideId);
             const s = document.getElementById(showId);
@@ -1019,17 +1006,12 @@
             }, 1200);
         }
 
-        // --- SỬA ĐỔI: BỎ QUA PAGE CHOICE, VÀO THẲNG INTERACTIVE ---
         let windowMeteorEngine = null;
 
         function goToPage3() {
-            // Thay vì chuyển sang page-3-choice, ta chuyển thẳng sang page-3-interactive
-            // và gọi các hàm khởi tạo cần thiết ngay tại đây.
-
-            // Logic chuyển trang
             switchPage('page-2', 'page-3-interactive');
 
-            // Logic khởi tạo (lấy từ startInteractiveMode cũ)
+
             setTimeout(() => {
                 initSteam();
                 initWindowStars();
@@ -1052,7 +1034,7 @@
             setTimeout(startFinale, 1500);
         }
 
-        // --- 3. INTERACTIVE LOGIC ---
+
         function initSteam() {
             const wishes = ["Bình an", "Sức khỏe", "May mắn", "Hạnh phúc", "Thành công", "Tiền tài", "Vui vẻ"];
             const steamCont = document.getElementById('steam-container');
@@ -1128,7 +1110,7 @@
             }
         }
 
-        // --- 4. FIREWORKS ENGINE (SUPER IMPROVED) ---
+
         const canvas = document.getElementById('fireworksCanvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -1149,7 +1131,7 @@
                 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                 let score = cores * 1.5 + ram;
                 if (isMobile) score *= 0.6;
-                // Tự động chọn medium cho an toàn, high nếu máy rất mạnh
+
                 if (score < 6) this.setTier('low');
                 else if (score > 12 && !isMobile) this.setTier('high');
                 else this.setTier('medium');
@@ -1173,16 +1155,15 @@
             gold: { base: [255, 215, 0], secondary: [255, 250, 200] },
             fire: { base: [255, 69, 0], secondary: [255, 165, 0] },
             cool: { base: [0, 191, 255], secondary: [255, 255, 255] },
-            spring: { base: [255, 105, 180], secondary: [144, 238, 144] } // Thêm màu xuân
+            spring: { base: [255, 105, 180], secondary: [144, 238, 144] }
         };
 
-        // --- COMPLEX ALGORITHMS CLASS ---
         class Rocket {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = height;
                 this.destY = Math.random() * (height * 0.4) + height * 0.05;
-                this.speed = Math.random() * 5 + 12; // Chậm lại chút để dễ nhìn
+                this.speed = Math.random() * 5 + 12; 
                 this.vx = (Math.random() - 0.5) * 3;
                 this.vy = -this.speed;
                 this.color = '255, 255, 255';
@@ -1222,12 +1203,10 @@
                 this.vy = v.y;
                 this.rgb = colorArr;
 
-                // --- LIFECYCLE ALGORITHM ---
                 this.birthTime = Date.now();
-                this.lifespan = 2000; // CHÍNH XÁC 2 GIÂY
+                this.lifespan = 2000; 
 
-                // Physics
-                this.friction = 0.96; // Air resistance
+                this.friction = 0.96; 
                 this.gravity = 0.08;
             }
             update() {
@@ -1240,20 +1219,16 @@
             draw() {
                 const age = Date.now() - this.birthTime;
 
-                // Nếu quá 2 giây thì không vẽ nữa (sẽ bị xóa ở loop)
                 if (age >= this.lifespan) return;
 
-                // Tính toán Alpha dựa trên thời gian (Non-linear fade)
-                // Giữ sáng trong 70% thời gian đầu, sau đó mờ nhanh
+
                 let alpha = 1;
                 const progress = age / this.lifespan;
 
                 if (progress > 0.7) {
-                    // Map range 0.7 -> 1.0 to alpha 1.0 -> 0.0
                     alpha = 1 - ((progress - 0.7) / 0.3);
                 }
 
-                // Flicker effect (nhấp nháy ngẫu nhiên)
                 if (Math.random() > 0.9) alpha *= 0.5;
 
                 ctx.fillStyle = `rgba(${this.rgb[0]}, ${this.rgb[1]}, ${this.rgb[2]}, ${alpha})`;
@@ -1269,13 +1244,12 @@
             const keys = Object.keys(palettes);
             const palette = palettes[keys[Math.floor(Math.random() * keys.length)]];
 
-            // Tăng mật độ hạt
             const count = Math.floor(Math.random() * (conf.particleCount.max - conf.particleCount.min)) + conf.particleCount.min;
 
             for (let i = 0; i < count; i++) {
-                // Sphere physics
+
                 const angle = Math.random() * Math.PI * 2;
-                // Random radius speed
+
                 const speed = Math.random() * 6 + 1;
 
                 const vx = Math.cos(angle) * speed;
@@ -1285,7 +1259,7 @@
                 particles.push(new Particle(x, y, { x: vx, y: vy }, color));
             }
 
-            // Flash effect
+
             ctx.globalCompositeOperation = 'lighter';
             ctx.fillStyle = `rgba(${palette.base[0]}, ${palette.base[1]}, ${palette.base[2]}, 0.4)`;
             ctx.beginPath();
@@ -1294,9 +1268,8 @@
         }
 
         function loop() {
-            // Hiệu ứng mờ đuôi (Trails)
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; // 0.15 để đuôi dài vừa phải
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; 
             ctx.fillRect(0, 0, width, height);
             ctx.globalCompositeOperation = 'lighter';
 
@@ -1328,7 +1301,6 @@
             const hny = document.getElementById('happy-new-year');
             hny.style.opacity = 1;
             hny.style.transform = "scale(1.1)";
-            // Bắn loạt đầu tiên
             for (let k = 0; k < 5; k++) setTimeout(() => rockets.push(new Rocket()), k * 200);
         }
     </script>
