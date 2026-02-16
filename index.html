@@ -663,6 +663,8 @@
 </head>
 
 <body>
+    <audio id="firework-sound" src="firework-pop.mp3" preload="auto"></audio>
+
     <audio id="bg-music" src="snaptik.vn_MKmpp.mp4 2.mp3" loop></audio>
     <div id="star-bg"></div>
     <canvas id="meteor-canvas"></canvas>
@@ -761,6 +763,9 @@
     <script>
 
         const bgMusic = document.getElementById('bg-music');
+        const fireworkSound = document.getElementById('firework-sound');
+        fireworkSound.volume = 0.15; // nhỏ thôi, đừng át nhạc
+
         let musicStarted = false;
 
         async function startMusicOnce() {
@@ -769,7 +774,17 @@
             bgMusic.play().catch(() => { });
             try {
                 if ('wakeLock' in navigator) {
-                    await navigator.wakeLock.request('screen');
+                    let wakeLock = null;
+
+                    async function requestWakeLock() {
+                        try {
+                            wakeLock = await navigator.wakeLock.request('screen');
+                            wakeLock.addEventListener('release', () => {
+                                console.log('Wake Lock released');
+                            });
+                        } catch (err) { }
+                    }
+
                 }
             } catch (err) { }
             musicStarted = true;
@@ -1163,7 +1178,7 @@
                 this.x = Math.random() * width;
                 this.y = height;
                 this.destY = Math.random() * (height * 0.4) + height * 0.05;
-                this.speed = Math.random() * 5 + 12; 
+                this.speed = Math.random() * 5 + 12;
                 this.vx = (Math.random() - 0.5) * 3;
                 this.vy = -this.speed;
                 this.color = '255, 255, 255';
@@ -1184,6 +1199,7 @@
                     this.dead = true;
                     createExplosion(this.x, this.y);
                 }
+
             }
             draw() {
                 ctx.beginPath();
@@ -1204,9 +1220,9 @@
                 this.rgb = colorArr;
 
                 this.birthTime = Date.now();
-                this.lifespan = 2000; 
+                this.lifespan = 2000;
 
-                this.friction = 0.96; 
+                this.friction = 0.96;
                 this.gravity = 0.08;
             }
             update() {
@@ -1265,11 +1281,19 @@
             ctx.beginPath();
             ctx.arc(x, y, 60, 0, Math.PI * 2);
             ctx.fill();
+            // ===== PHÁT ÂM THANH PHÁO NỔ NHẸ =====
+            if (fireworkSound) {
+                fireworkSound.volume = 0.1 + Math.random() * 0.1; // dao động nhẹ
+                fireworkSound.playbackRate = 0.9 + Math.random() * 0.2; // thay đổi cao độ chút
+                fireworkSound.currentTime = 0;
+                fireworkSound.play().catch(() => { });
+            }
+
         }
 
         function loop() {
             ctx.globalCompositeOperation = 'source-over';
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.15)'; 
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.15)';
             ctx.fillRect(0, 0, width, height);
             ctx.globalCompositeOperation = 'lighter';
 
